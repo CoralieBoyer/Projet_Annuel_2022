@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dashboardclient.Help">
+    <children>
+        <VBox accessibleRole="BUTTON" layoutX="-4.0" prefHeight="801.0" prefWidth="319.0" style="-fx-background-color: #40E0D0;">
+            <children>
+                <Pane prefHeight="210.0" prefWidth="255.0">
+                    <children>
+                        <Button fx:id="accueilButton" layoutX="1.0" layoutY="70.0" mnemonicParsing="false" onAction="#switchToAccueil" prefHeight="69.0" prefWidth="320.0" styleClass="button3" stylesheets="@../../../fullpackstyling.css" text="SacFidelity">
+                            <graphic>
+                                <FontIcon iconLiteral="fa-shopping-bag" iconSize="20" />
+                            </graphic>
+                            <font>
+                                <Font size="25.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </Pane>
+                <Button mnemonicParsing="false" onAction="#switchToPrestations" prefHeight="45.0" prefWidth="320.0" styleClass="button3" stylesheets="@../../../fullpackstyling.css" text="Prestations">
+                    <graphic>
+                        <FontIcon iconLiteral="fa-ticket" />
+                    </graphic>
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#switchToProfil" prefHeight="45.0" prefWidth="320.0" styleClass="button3" stylesheets="@../../../fullpackstyling.css" text="Réductions">
+                    <graphic>
+                        <FontIcon iconLiteral="fa-user" />
+                    </graphic>
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#switchToConversions" prefHeight="45.0" prefWidth="320.0" styleClass="button3" stylesheets="@../../../fullpackstyling.css" text="Points =&gt; Euros">
+                    <graphic>
+                        <FontIcon iconLiteral="fa-eur" />
+                    </graphic>
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#switchToHelp" prefHeight="45.0" prefWidth="320.0" styleClass="button3" stylesheets="@../../../fullpackstyling.css" text="Help">
+                    <graphic>
+                        <FontIcon iconLiteral="fa-life-ring" />
+                    </graphic>
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Button>
+                <Button minHeight="6.0" mnemonicParsing="false" onAction="#onLeaveButtonClick" prefHeight="50.0" prefWidth="320.0" styleClass="button3" stylesheets="@../../../fullpackstyling.css" text="Quittez L'application" translateY="360.0" underline="true">
+                    <graphic>
+                        <FontIcon iconLiteral="fa-close" />
+                    </graphic>
+                </Button>
+            </children>
+        </VBox>
+        <VBox layoutX="308.0" layoutY="1.0" prefHeight="800.0" prefWidth="973.0">
+            <children>
+                <Pane prefHeight="215.0" prefWidth="1357.0" style="-fx-background-color: #40E0D0 #40E0D0;" translateY="-1.0" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
