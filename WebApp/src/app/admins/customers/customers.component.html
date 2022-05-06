@@ -1,0 +1,107 @@
+<div id="main" class="main-content flex-1 mt-12 md:mt-2 pb-24 md:pb-5">
+  <div class="bg-gray-800 pt-3">
+    <div class="rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
+      <h1 class="font-bold pl-2">Fiche : {{attributsCustomer.name}} {{attributsCustomer.firstname}}</h1>
+    </div>
+  </div>
+  <div class="flex justify-between m-4">
+    <a routerLink="/admin">Revenir</a>
+    <p id="message"></p>
+  </div>
+
+  <div class="flex justify-around">
+
+    <div class="bg-white border-transparent rounded-lg shadow-xl w-7/12">
+      <div class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
+        <h1 class="font-bold uppercase text-gray-600">Identité du client</h1>
+      </div>
+      <div class="p-5">
+        <table class="table-auto w-full bg-gray-100">
+          <thead>
+          <tr>
+            <th *ngFor="let title of headerTabInfos">{{title}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="text-center">{{attributsCustomer.id_user}}</td>
+            <td class="text-center">{{attributsCustomer.name}}</td>
+            <td class="text-center">{{attributsCustomer.firstname}}</td>
+            <td class="text-center">{{attributsCustomer.email}}</td>
+            <td class="text-center">{{attributsCustomer.phone_number}}</td>
+            <td class="text-center">
+              <button (click)="delete(attributsCustomer.id_user, attributsCustomer.id)">Supprimer</button>
+              <button class="ml-4" (click)="modify(attributsCustomer.id_user, attributsCustomer.name, attributsCustomer.password, attributsCustomer.firstname, attributsCustomer.email, attributsCustomer.phone_number, attributsCustomer.id)">Modifier</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="bg-white border-transparent rounded-lg shadow-xl w-4/12">
+      <div class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
+        <h1 class="font-bold uppercase text-gray-600">Adresse du client</h1>
+      </div>
+      <div class="p-5">
+        <table class="table-auto w-full bg-gray-100">
+          <thead>
+          <tr>
+            <th *ngFor="let title of headerTabAddress">{{title}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="text-center">{{attributsCustomer.address}}</td>
+            <td class="text-center">{{attributsCustomer.city}}</td>
+            <td class="text-center">{{attributsCustomer.zip_code}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bg-white border-transparent rounded-lg shadow-xl mt-8">
+    <div class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
+      <h1 class="font-bold uppercase text-gray-600">Historique des achats</h1>
+    </div>
+    <div class="p-5">
+      <table class="table-auto w-full bg-gray-100">
+        <thead>
+        <tr>
+          <th *ngFor="let title of headerTabBasket">{{title}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <ul class="flex justify-around">
+              <li>Nom</li>
+              <li>Prix</li>
+              <li>Quantite</li>
+            </ul>
+          </td>
+        </tr>
+        <tr *ngFor="let basket of idBaskets" class="border">
+          <td class="text-center w-3/12 align-top">{{basket.id}}</td>
+          <td class="text-center w-3/12 align-top">{{basket.date_validation}}</td>
+          <div *ngFor="let product of attributsBasket[+basket.id]">
+            <td class="text-center w-3/12">
+              <ul class="flex justify-around">
+                <li>{{product.name}}</li>
+                <li>{{product.points}} poinns</li>
+                <li>{{product.count}}</li>
+              </ul>
+            </td>
+          </div>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

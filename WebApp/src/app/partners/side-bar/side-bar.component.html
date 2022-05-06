@@ -1,0 +1,41 @@
+<div id="sidebar" class="h-screen w-16 menu bg-white text-white px-4 flex items-center nunito static fixed shadow">
+
+  <ul class="list-reset ">
+    <li class="my-2 md:my-0">
+      <a routerLink="/partenaire" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+        <div class="flex items-center">
+          <img class="mr-3" src="assets/icons/statistiques.png"><span class="w-full ml-10 inline-block pb-1 md:pb-0 text-sm">Statistiques</span>
+        </div>
+      </a>
+    </li>
+    <li class="my-2 md:my-0 ">
+      <a routerLink="/partenaire/prestations" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+        <div class="flex items-center">
+          <img class="mr-3" src="assets/icons/product.png"><span class="w-full ml-10 inline-block pb-1 md:pb-0 text-sm">Prestations</span>
+        </div>
+      </a>
+    </li>
+    <li class="my-2 md:my-0">
+      <a routerLink="/partenaire/cotisations" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+        <div class="flex items-center">
+          <img class="mr-3" src="assets/icons/salary.png"><span class="w-full ml-10 inline-block pb-1 md:pb-0 text-sm">Cotisations</span>
+        </div>
+      </a>
+    </li>
+    <li class="my-2 md:my-0">
+      <a routerLink="/partenaire/contact" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+        <div class="flex items-center">
+          <img class="mr-3" src="assets/icons/contact.png"><span class="w-full ml-10 inline-block pb-1 md:pb-0 text-sm">Nous contacter</span>
+        </div>
+      </a>
+    </li>
+    <li class="my-2 md:my-0">
+      <a (click)="deconnexion()" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+        <div class="flex items-center">
+          <img class="mr-3" src="assets/icons/deconnexion.png"><span class="w-full ml-10 inline-block pb-1 md:pb-0 text-sm">Déconnexion</span>
+        </div>
+      </a>
+    </li>
+  </ul>
+
+</div>

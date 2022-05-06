@@ -1,0 +1,58 @@
+<app-side-bar></app-side-bar>
+<div class="flex justify-center">
+  <div class="w-4/5">
+    <a routerLink="/partenaire/prestations" type="button" class="text-white bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-3 text-center inline-flex items-center">
+      Revenir à la liste des produits
+      <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+    </a>
+    <div class="flex justify-around items-center">
+      <div  class="flex flex-col shadow-md cursor-pointer w-2/5 duration-300 mb-2 ml-15 ml-0 mr-5 ml-5 mt-5 mb-5">
+        <!-- Preview -->
+        <div class="inline relative group h-60 lg: h-96">
+          <!-- Thumbnail -->
+          <img class="absolute rounded-t object-cover h-full w-full"
+               src="/assets/images/products/image.jpg"
+               alt="Product Preview" />
+        </div>
+
+        <!-- Body -->
+        <div class="flex flex-col bg-white rounded-b p-3">
+          <!-- Title -->
+          <div class="text-sm font-semibold text-gray-900 hover:underline truncate">
+            Name produit
+          </div>
+
+          <!-- Price -->
+          <div class="text-sm text-gray-600 font-bold mt-4 mb-1">
+            30 €
+          </div>
+
+          <div class="text-sm text-gray-600 font-semibold mt-2 mb-1">
+            Blabalbalbalablablablablblablablabalblabalbl
+          </div>
+        </div>
+      </div>
+      <!--Graph Card-->
+      <div class="w-2/5">
+        <div class="border-b p-3">
+          <h5 class="font-bold text-black">Ventes</h5>
+        </div>
+        <div class="h-72">
+          <ngx-charts-bar-vertical
+            [results]="saleData"
+            [xAxisLabel]="'Mois'"
+            [yAxisLabel]="'Prix (€)'"
+            [legend]="false"
+            [showXAxisLabel]="true"
+            [showYAxisLabel]="true"
+            [xAxis]="true"
+            [yAxis]="true"
+            [gradient]="false">
+          </ngx-charts-bar-vertical>
+        </div>
+      </div>
+      <!--/Graph Card-->
+    </div>
+    <p>INFOS</p>
+  </div>
+</div>

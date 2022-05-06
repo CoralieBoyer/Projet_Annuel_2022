@@ -1,0 +1,78 @@
+<app-header></app-header>
+
+<h1 class="text-3xl font-bold pt-4 pl-4">{{attributsCustomer.firstname}} {{attributsUser.name}}</h1>
+<div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-blue-500 opacity-25 mb-5"></div>
+
+<div class="flex justify-around flex-wrap">
+  <!-- Left -->
+  <div class="w-7/12">
+    <h1 class="font-semibold uppercase text-gray-600">Historique des commandes</h1>
+    <!-- -->
+    <div class="border-t mt-4" *ngFor="let basket of idBaskets">
+      <div class="w-full flex justify-around">
+        <p>commande n° {{basket.id}}</p>
+        <p>{{basket.date_validation}}</p>
+      </div>
+      <div class="w-full flex" *ngFor="let product of attributsBasket[+basket.id]">
+        <p class="pr-20">{{product.name}}</p>
+        <p class="pr-20">quantité : {{product.count}}</p>
+        <p>{{product.price}} €</p>
+      </div>
+      <!--<p class="text-right">Total : points</p>-->
+    </div>
+    <!-- RETOURS -->
+    <!-- <h1 class="font-semibold uppercase text-gray-600 mt-8">Mes retours</h1>-->
+  </div>
+
+  <!-- Right -->
+  <div class="sm:w-8/12 lg:w-4/12">
+    <div class="bg-white border-transparent rounded-lg shadow-xl shadow-lg w-full">
+      <div class="flex flex-col bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
+        <h1 class="font-semibold uppercase text-gray-600">Sécurité</h1>
+      </div>
+      <div class="p-5">
+        <p class="text-base font-bold flex items-center justify-center lg:justify-start">{{attributsUser.email}}</p>
+
+        <p class="pt-5 text-sm">Changer de mot de passe :</p>
+
+        <div class="flex flex-col w-full">
+          <input class="border-ronded shadow mt-3" placeholder="Ancien mot de passe..." [(ngModel)]="password.old">
+          <input class="border-ronded shadow mt-3" placeholder="Nouveau mot de passe..." [(ngModel)]="password.new">
+          <p id="messagePassword"></p>
+          <div class="flex w-full justify-center pt-5">
+            <button (click)="modifyPassword()" class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full w-6/12 text-center">
+              Modifier
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white border-transparent rounded-lg mt-5  hadow-xl shadow-lg w-full">
+      <div class="flex flex-col bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
+        <h1 class="font-semibold uppercase text-gray-600">Mes infos</h1>
+      </div>
+      <div class="p-5">
+        <div class="flex justify-around">
+          <input class="mt-3" placeholder="Nom" [(ngModel)]="attributsUser.name">
+          <input class="mt-3" placeholder="Prénom" [(ngModel)]="attributsCustomer.firstname">
+        </div>
+        <div class="flex flex-col w-full">
+          <input class="mt-3" placeholder="Adresse" [(ngModel)]="attributsCustomer.address">
+          <div class="flex justify-around">
+            <input class="mt-3" placeholder="12345" [(ngModel)]="attributsCustomer.zip_code">
+            <input class="mt-3" placeholder="Ville" [(ngModel)]="attributsCustomer.city">
+          </div>
+          <input class="mt-3" placeholder="0123456789" [(ngModel)]="attributsCustomer.phone_number">
+          <p id="messageInfos"></p>
+          <div class="flex w-full justify-center pt-5">
+            <button (click)="modifyInfos()" class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full w-6/12 text-center">
+              Modifier
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

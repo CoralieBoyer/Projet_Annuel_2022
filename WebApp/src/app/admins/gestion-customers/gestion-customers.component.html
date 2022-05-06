@@ -1,0 +1,24 @@
+<div id="main" class="main-content flex-1 bg-gray-100 mt-12 md:mt-2 pb-24 md:pb-5">
+  <div class="bg-gray-600 pt-3">
+    <div class="rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
+      <h1 class="font-bold pl-2">Clients</h1>
+    </div>
+  </div>
+
+  <table class="table-auto w-full">
+    <thead>
+    <tr>
+      <th class="bg-cyan-800 w-1/6  text-lg font-semibold text-white py-4 lg:py-7 px-3 lg:px-4" *ngFor="let title of headerTab">{{title}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let attribut of attributsUser" class="border border-b-black">
+      <td class="text-center">{{attribut.id_user}}</td>
+      <td class="text-center">{{attribut.name}}</td>
+      <td class="text-center">{{attribut.firstname}}</td>
+      <td class="text-center">{{attribut.email}}</td>
+      <td class="text-center w-3/12"><a [routerLink]="'customer/'+attribut.id_user">Voir la fiche</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

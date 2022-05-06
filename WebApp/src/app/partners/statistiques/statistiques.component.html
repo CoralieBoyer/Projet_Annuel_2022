@@ -1,0 +1,153 @@
+<div class="flex bg-gray-100 font-sans min-h-screen">
+
+  <app-side-bar></app-side-bar>
+
+  <div class="flex flex-row flex-wrap flex-1 flex-grow content-start pl-16">
+
+    <div class="h-40 lg:h-20 w-full flex flex-wrap">
+      <nav id="header" class="bg-gray-200 w-full lg:max-w-sm flex items-center border-b-1 border-gray-300 order-2 lg:order-1">
+
+        <div class="px-2 w-full">
+          <select id="years" (change)="onChange($event.target)" class="bg-gray-300 border-2 border-gray-200 rounded-full w-full py-3 px-4 text-gray-500 font-bold leading-tight focus:outline-none focus:bg-white focus:shadow-md">
+            <option *ngFor="let year of select.slice().reverse()" value="{{year}}">Année {{year}}</option>
+          </select>
+        </div>
+
+      </nav>
+      <nav id="header1" class="bg-gray-100 w-auto flex-1 border-b-1 border-gray-300 order-1 lg:order-2">
+
+        <!--NAVBAR-->
+        <div class="flex h-full justify-between items-center">
+          <p *ngIf="!contribution" class="pl-4 italic text-gray-600">Vous n'avez pas payer la cotisation de cette année.</p>
+        </div>
+        <!-- -->
+
+      </nav>
+    </div>
+
+    <!--Dash Content -->
+    <div id="dash-content" class="bg-gray-200 py-2 lg:py-0 w-full lg:max-w-sm flex flex-wrap content-start">
+
+      <div class="w-1/2 lg:w-full">
+        <div class="border-2 border-gray-400 border-dashed hover:border-transparent hover:bg-white hover:shadow-xl rounded p-6 m-2 md:mx-10 md:my-6">
+          <div class="flex flex-col items-center">
+            <div class="flex-shrink pr-4">
+              <div class="rounded-full p-3 bg-gray-300"><img src="assets/icons/pieces.png"></div>
+            </div>
+            <div class="flex-1">
+              <h3 class="font-bold text-3xl text-center">{{pricePrestationsSold}} €</h3>
+              <h5 class="font-bold text-gray-500">Prestations vendues</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-1/2 lg:w-full">
+        <div class="border-2 border-gray-400 border-dashed hover:border-transparent hover:bg-white hover:shadow-xl rounded p-6 m-2 md:mx-10 md:my-6">
+          <div class="flex flex-col items-center">
+            <div class="flex-shrink">
+              <div class="rounded-full p-3 pl-4 bg-gray-300"><img src="assets/icons/compte-rendu.png"></div>
+            </div>
+            <div class="flex-1">
+              <h3 class="font-bold text-3xl text-center">{{countPrestationsSold}}</h3>
+              <h5 class="font-bold text-gray-500">Prestations vendus</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-1/2 lg:w-full">
+        <div class="border-2 border-gray-400 border-dashed hover:border-transparent hover:bg-white hover:shadow-xl rounded p-6 m-2 md:mx-10 md:my-6">
+          <div class="flex flex-col items-center">
+            <div class="flex-shrink">
+              <div class="rounded-full p-3 bg-gray-300"><img src="assets/icons/users.png"></div>
+            </div>
+            <div class="flex-1">
+              <h3 class="font-bold text-3xl text-center">200</h3>
+              <h5 class="font-bold text-gray-500">Utilisateurs touchés</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-1/2 lg:w-full" *ngIf="year == now">
+        <div class="border-2 border-gray-400 border-dashed hover:border-transparent hover:bg-white hover:shadow-xl rounded p-6 m-2 md:mx-10 md:my-6">
+          <div class="flex flex-col items-center">
+            <div class="flex-shrink">
+              <div class="rounded-full p-3 pl-4 bg-gray-300"><img src="assets/icons/compte-rendu.png"></div>
+            </div>
+            <div class="flex-1">
+              <h3 class="font-bold text-3xl text-center">{{countPrestations}}</h3>
+              <h5 class="font-bold text-gray-500">Prestations disponibles</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-1/2 lg:w-full" *ngIf="year == now">
+        <div class="border-2 border-gray-400 border-dashed hover:border-transparent hover:bg-white hover:shadow-xl rounded p-6 m-2 md:mx-10 md:my-6">
+          <div class="flex flex-col items-center">
+            <div class="flex-shrink pr-4">
+              <div class="rounded-full p-3 bg-gray-300"><img src="../../../assets/icons/pieces.png"></div>
+            </div>
+            <div class="flex-1">
+              <h3 class="font-bold text-3xl text-center">{{pricePrestations}} €</h3>
+              <h5 class="font-bold text-gray-500">Prestations disponibles</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!--Graph Content -->
+    <div id="main-content" class="xl:w-2/3">
+
+      <div class="flex flex-wrap">
+
+        <div class="w-full p-6 xl:max-w-6xl">
+
+          <!--"Container" for the graphs"-->
+          <div class="max-w-full lg:max-w-3xl xl:max-w-5xl">
+
+            <!--Graph Card-->
+            <div class="border-b p-3">
+              <h5 class="font-bold text-black">Ventes</h5>
+            </div>
+            <div class="h-96">
+              <ngx-charts-bar-vertical
+                [results]="saleData"
+                [xAxisLabel]="'Mois'"
+                [yAxisLabel]="'Prix (€)'"
+                [legend]="false"
+                [showXAxisLabel]="true"
+                [showYAxisLabel]="true"
+                [xAxis]="true"
+                [yAxis]="true"
+                [gradient]="false">
+              </ngx-charts-bar-vertical>
+            </div>
+            <!--/Graph Card-->
+
+            <!--Table Card-->
+            <div class="p-3">
+              <div class="border-b p-3">
+                <h5 class="font-bold text-black">Appliquer un Boost</h5>
+              </div>
+              <div class="p-5">
+                <label class="p-1">Multiplicateur :<br></label>
+                <input type="number" step="0.1" min="1" class="my-1 p-2 border rounded shadow" placeholder="multiplicateur" [(ngModel)]="multiplicator">
+                <button class="ml-2 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mr-2">Valider</button>
+                <p class="pl-1 italic">1 Loyalty Point = {{(0.20 * multiplicator).toFixed(2)}} €</p>
+              </div>
+            </div>
+            <!--/table Card-->
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

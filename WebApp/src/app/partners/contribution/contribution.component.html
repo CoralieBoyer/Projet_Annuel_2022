@@ -1,0 +1,145 @@
+<app-side-bar></app-side-bar>
+<div class="flex flex-col items-center pt-3">
+  <h1 class="text-3xl font-bold mt-3 lg:pt-0 w-4/5">Vos cotisations</h1>
+  <div class="w-4/5">
+    <div class="mx-auto lg:mx-0 w-5/12 pt-3 mb-6 border-b-2 border-blue-800 opacity-50"></div>
+  </div>
+</div>
+
+<div class="flex justify-center">
+  <div class="w-4/5 flex justify-around shadow rounded p-3">
+    <div class="w-1/2">
+      <!--Table Card-->
+      <div class="border-b p-3 w-2/3">
+        <h5 class="font-bold text-black">Rappel sur les cautisations</h5>
+      </div>
+      <table class="w-full p-5 text-gray-700 w-full">
+        <thead>
+        <tr>
+          <th class="text-center text-blue-900">Chiffre d'affaire</th>
+          <th class="text-center text-blue-900">Montant de la cautisation (% du ca)</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+          <td class="text-center text-black">-200 000 €</td>
+          <td class="text-center text-black">0%</td>
+        </tr>
+        <tr>
+          <td class="text-center text-gray-500">200 000 € / 800 00 €</td>
+          <td class="text-center text-gray-500">0,8%</td>
+        </tr>
+        <tr>
+          <td class="text-center text-black">800 000 € / 1 500 00 €</td>
+          <td class="text-center text-black">0,6%</td>
+        </tr>
+        <tr>
+          <td class="text-center text-gray-500">1 500 000 € / 3 000 00 €</td>
+          <td class="text-center text-gray-500">0,4%</td>
+        </tr>
+        <tr>
+          <td class="text-center text-black">+ 3 000 000 €</td>
+          <td class="text-center text-black">0,3%</td>
+        </tr>
+        </tbody>
+      </table>
+      <!--Table Card-->
+
+      <!-- Form Card -->
+      <div class="border-b px-3 w-2/3">
+        <h5 class="font-bold text-black mt-6">Payer votre cotisation</h5>
+      </div>
+      <div class="flex items-center mt-6">
+        <input class="border rounded mr-3 p-2" placeholder="Chiffre d'affaire (€)" [(ngModel)]="turnover">
+        <p class="mr-5 italic text-gray-600">250 000 € de cotisation</p>
+        <button (click)="toggleModal()" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mr-2">Payer</button>
+      </div>
+    </div>
+    <!-- Form Card -->
+
+    <!-- Graph Card -->
+    <div class="w-1/2 h-96">
+      <ngx-charts-bar-vertical
+        [results]="saleData"
+        [xAxisLabel]="'Années'"
+        [yAxisLabel]="'Prix (100k€)'"
+        [legend]="false"
+        [showXAxisLabel]="true"
+        [showYAxisLabel]="true"
+        [xAxis]="true"
+        [yAxis]="true"
+        [gradient]="false">
+      </ngx-charts-bar-vertical>
+    </div>
+    <!-- Graph Card -->
+  </div>
+</div>
+
+<div *ngIf="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+  <div class="relative w-auto my-6 mx-auto max-w-6xl">
+    <!--content-->
+    <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full p-8 bg-white outline-none focus:outline-none">
+      <!--header-->
+      <div class="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+        <h3 class="text-3xl font-semibold">
+          Paiement
+        </h3>
+        <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" (click)="toggleModal()">
+          <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+            ×
+          </span>
+        </button>
+      </div>
+
+      <!--body-->
+      <div class="space-y-4">
+        <div class="w-full rounded-2xl bg-gray-50 px-4 ring-2 ring-gray-200">
+          <input
+            type="text"
+            placeholder="4242 4242 4242 4242"
+            class="my-3 w-full border-none bg-transparent outline-none focus:outline-none"
+            [(ngModel)]="cardNumber"
+          />
+        </div>
+        <div class="flex">
+          <div class="w-2/6 rounded-2xl bg-gray-50 px-4 ring-2 ring-gray-200 mr-6">
+            <input
+              type="text"
+              placeholder="09"
+              class="my-3 w-full border-none bg-transparent outline-none focus:outline-none"
+              [(ngModel)]="expiryMonth"
+            />
+          </div>
+          <div class="w-2/6 rounded-2xl bg-gray-50 px-4 ring-2 ring-gray-200 mr-6">
+            <input
+              type="text"
+              placeholder="24"
+              class="my-3 w-full border-none bg-transparent outline-none focus:outline-none"
+              [(ngModel)]="expiryYear"
+            />
+          </div>
+          <div class="w-2/6 rounded-2xl bg-gray-50 px-4 ring-2 ring-gray-200">
+            <input
+              type="text"
+              placeholder="667"
+              class="my-3 w-full border-none bg-transparent outline-none focus:outline-none"
+              [(ngModel)]="cvc"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!--footer-->
+      <div class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+        <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModal()">
+          Annuler
+        </button>
+        <button class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="getToken()">
+          Payer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>

@@ -1,0 +1,127 @@
+<div id="main" class="main-content flex-1 mt-12 md:mt-2 pb-24 md:pb-5">
+  <div class="bg-gray-800 pt-3">
+    <div class="rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
+      <h1 class="font-bold pl-2">Fiche : {{attributsPartner.name}}</h1>
+    </div>
+  </div>
+  <div class="flex justify-between m-4">
+    <a routerLink="/admin">Revenir</a>
+    <p id="message"></p>
+  </div>
+  <div class="flex justify-around">
+
+    <div class="bg-white border-transparent rounded-lg shadow-xl w-7/12">
+      <div class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
+        <h1 class="font-bold uppercase text-gray-600">Informations de la société</h1>
+      </div>
+      <div class="p-5">
+        <table class="table-auto w-full bg-gray-100">
+          <thead>
+          <tr>
+            <th *ngFor="let title of headerTabInfos">{{title}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="text-center">{{attributsPartner.id_user}}</td>
+            <td class="text-center">{{attributsPartner.name}}</td>
+            <td class="text-center">{{attributsPartner.siret}}</td>
+            <td class="text-center">{{attributsPartner.status}}</td>
+            <td class="text-center">{{attributsPartner.email}}</td>
+            <td class="text-center">
+              <button (click)="delete(attributsPartner.id_user, attributsPartner.id)">Supprimer</button>
+              <button class="ml-4" (click)="modify(attributsPartner.id_user, attributsPartner.name, attributsPartner.email, attributsPartner.password, attributsPartner.siret, attributsPartner.status, attributsPartner.id)">Modifier</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-5 bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
+        <h1 class="font-bold uppercase text-gray-600">Ajouter une cautisation</h1>
+      </div>
+      <div class="p-5 flex items-center w-full">
+        <input class="border rounded mr-5" placeholder="Chiffre d'affaire (€)">
+        <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mr-2">Ajouter</button>
+        <table class="table-auto w-full bg-gray-100">
+          <thead>
+          <tr>
+            <th>Chiffre d'affaire</th>
+            <th>Montant de la cautisation (% du ca)</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="text-center">-200 000 €</td>
+            <td class="text-center">0%</td>
+          </tr>
+          <tr>
+            <td class="text-center">200 000 € / 800 00 €</td>
+            <td class="text-center">0,8%</td>
+          </tr>
+          <tr>
+            <td class="text-center">800 000 € / 1 500 00 €</td>
+            <td class="text-center">0,6%</td>
+          </tr>
+          <tr>
+            <td class="text-center">1 500 000 € / 3 000 00 €</td>
+            <td class="text-center">0,4%</td>
+          </tr>
+          <tr>
+            <td class="text-center">+ 3 000 000 €</td>
+            <td class="text-center">0,3%</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="bg-white border-transparent rounded-lg shadow-xl w-4/12">
+      <div class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
+        <h1 class="font-bold uppercase text-gray-600">Historique des cotisations</h1>
+      </div>
+      <div class="h-72 w-full">
+        <ngx-charts-bar-vertical
+          [results]="saleData"
+          [xAxisLabel]="'Années'"
+          [yAxisLabel]="'Prix (€)'"
+          [legend]="false"
+          [showXAxisLabel]="true"
+          [showYAxisLabel]="true"
+          [xAxis]="true"
+          [yAxis]="true"
+          [gradient]="false">
+        </ngx-charts-bar-vertical>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white border-transparent rounded-lg shadow-xl m-6">
+    <div class="bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
+      <h1 class="font-bold uppercase text-gray-600">Liste des produits</h1>
+    </div>
+    <div class="p-5">
+      <table class="table-auto bg-gray-100 w-full">
+        <thead>
+        <tr>
+          <th class="text-center" *ngFor="let title of headerTabProduces">{{title}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let attribut of attributsProduces">
+          <td>{{attribut.id_product}}</td>
+          <td><input class="text-center bg-gray-100" [(ngModel)]="attribut.name"></td>
+          <td><textarea class="text-center bg-gray-100">{{attribut.description}}</textarea></td>
+          <td><img src="/assets/images/products/{{attribut.image}}" class="w-40"></td>
+          <td><input class="text-center bg-gray-100" [(ngModel)]="attribut.price"></td>
+          <td><input class="text-center bg-gray-100" [(ngModel)]="attribut.quantity"></td>
+          <td>
+            <button (click)="deleteProduce(attribut.id_product)">Supprimer</button>
+            <button class="ml-4" (click)="modifyProduce(attribut.description, attribut.id_product, attribut.image, attribut.name, attribut.price, attribut.quantity)">Modifier</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

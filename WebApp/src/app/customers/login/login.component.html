@@ -1,0 +1,48 @@
+<app-header></app-header>
+<div class="flex flex-col md:flex-row md:items-start justify-around items-center">
+  <div class="flex flex-col items-center w-5/12 mb-4">
+    <h1 class="font-medium text-5xl mt-20 mb-16 text-indigo-800">Connexion</h1>
+    <div class="md:w-9/12">
+      <form [formGroup]="loginForm" (ngSubmit)="verifLogin()" class="bg-white shadow-md rounded px-8 pt-6 pb-8">
+        <div class="mb-4" *ngFor="let attribut of attributsConnexion">
+          <label class="block text-gray-700 text-sm font-bold mb-2">
+            {{attribut.label}}
+          </label>
+          <input [className]="attribut.class" [formControlName]="attribut.name" [type]="attribut.type" [(ngModel)]="attribut.value">
+        </div>
+        <p class="text-red-500 text-xs italic mb-4" id="messageConnexion"></p> <!--Error message-->
+        <p class="text-red-500 text-xs italic mb-4">{{response}}</p>
+        <div class="flex place-content-center">
+          <input type="submit" class="bg-indigo-800 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" value="Connexion">
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="flex flex-col items-center w-6/12 mb-4">
+    <h1 class="font-medium text-5xl mt-20 mb-16 text-indigo-800">Inscription</h1>
+    <ul class="flex border-b">
+      <li class="-mb-px mr-1">
+        <button class="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-blue-800 font-semibold" (click)="nav('customer')" id="buttonNavClient">Client</button>
+      </li>
+      <li class="mr-1">
+        <button class="bg-white inline-block py-2 px-4 text-blue-500 hover:text-blue-700 font-semibold" (click)="nav('entreprise')" id="buttonNavEntreprise">Entreprise</button>
+      </li>
+    </ul>
+    <div class="md:w-9/12">
+      <form [formGroup]="inscriptionForm" (ngSubmit)="verifInscription()" class="bg-white shadow-md rounded px-8 pt-6 pb-8">
+        <ng-container *ngFor="let attribut of attributsInscription">
+          <div class="mb-4" *ngIf="attribut.ngif">
+            <label class="block text-gray-700 text-sm font-bold mb-2" [for]="attribut.name">
+              {{attribut.label}}
+            </label>
+            <input [(ngModel)]="attribut.value" [formControlName]="attribut.name" [className]="attribut.class" [id]="attribut.name" [type]="attribut.type">
+          </div>
+        </ng-container>
+        <p class="text-red-500 text-xs italic mb-4" id="messageInscription"></p> <!--Error message-->
+        <div class="flex place-content-center">
+          <input type="submit" class="bg-indigo-800 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" value="Connexion">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

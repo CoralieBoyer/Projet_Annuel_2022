@@ -1,0 +1,213 @@
+<app-header></app-header>
+
+<div class="items-center md:flex items-center justify-between mx-7 w-12/12 lg:pt-2 md:pt-0">
+  <div class="bg-white">
+    <div class="max-w-2xl sm:py-10 sm:px-0 lg:max-w-screen-lg	 lg:px-0">
+      <h2 class="sr-only">PRODUCTS</h2>
+      <div  class="flex flex-col shadow-md cursor-pointer hover:-translate-y-1 duration-300 mb-2 ml-15 w-113 md: w-72 ml-0 mr-5 sm: w-44 ml-5 mt-5 mb-5">
+        <!-- Preview -->
+        <div class="inline relative group h-60 lg: h-96">
+          <!-- Thumbnail -->
+          <img class="absolute rounded-t object-cover h-full w-full"
+               src="/assets/images/products/{{attributsProduce.image}}"
+               alt="Product Preview" />
+
+          <!-- Hover Bar -->
+          <div class="flex flex-row absolute justify-end
+                    h-16 w-full bottom-0 px-3 space-x-2
+                    bg-none opacity-0 group-hover:opacity-100
+                    group-hover:bg-gradient-to-t from-black/20 via-gray-800/20 to-transparent
+                    transition-all ease-in-out duration-200 delay-100">
+
+            <!-- Add to Bookmarks Button -->
+            <button class="bg-gray-50/10 rounded-full
+                        px-1 h-9 w-9 my-auto hover:bg-gray-50/20
+                        transition-colors duration-200">
+              <i class="mdi mdi-playlist-plus text-xl text-gray-200
+                            hover:text-white transition-all duration-200"
+                 title="Add to Bookmarks"></i>
+            </button>
+
+            <!-- Add to Favorites Button -->
+            <button class="bg-gray-50/10 rounded-full
+                        px-1 h-9 w-9 my-auto hover:bg-gray-50/20
+                        transition-colors duration-200">
+              <i class="mdi mdi-heart text-xl text-gray-200 p-1
+                            hover:text-white transition-all duration-200"
+                 title="Add to Favorites"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="flex flex-col bg-white rounded-b p-3">
+          <!-- Title -->
+          <div class="text-sm font-semibold text-gray-900 hover:underline truncate">
+            {{attributsProduce.name}}
+          </div>
+
+          <!-- Price -->
+          <div class="text-sm text-gray-600 font-bold mt-4 mb-1">
+            {{attributsProduce.price}} €
+          </div>
+
+          <div class="text-sm text-gray-600 font-semibold mt-2 mb-1">
+            {{attributsProduce.description}}
+          </div>
+
+          <!-- Body -->
+          <div class="flex flex-row mt-2">
+            <!-- Detail Column -->
+            <div class="flex flex-col flex-auto">
+              <!-- Rating -->
+              <div class="flex flex-row group">
+                <div class="text-xxs text-gray-400 ml-1 hover:underline">
+                  <!--                  (45)-->
+                </div>
+              </div>
+
+              <!-- Statistic -->
+              <div class="text-xxs text-gray-400 mt-1" title="34k Downlaods in this year">
+                <!--                100 vendus-->
+              </div>
+            </div>
+
+            <!-- Button Column -->
+            <div class="flex flex-row flex-auto justify-end">
+              <!-- Cart Button -->
+              <a class="flex text-xs border px-3 my-auto py-2 mr-2
+                        border-amber-500 group hover:bg-amber-500
+                        rounded-xss
+                        transition-all duration-200">
+
+                <!-- Icon -->
+                <i class="mdi mdi-cart-outline text-amber-700
+                            group-hover:text-white delay-100"></i>
+              </a>
+
+              <!-- Preview Link Button -->
+              <a (click)="toggleModal()" class="flex text-xs border px-3 my-auto py-2
+                        border-amber-500 group hover:bg-amber-500
+                        rounded-xss
+                        transition-all duration-200">
+
+                <!-- Icon -->
+                <i class="mdi mdi-credit-card-check-outline text-amber-700
+                            group-hover:text-white delay-100"></i>
+
+                <!-- Text -->
+                <div class="text-xs text-amber-700 font-semibold ml-2
+                            group-hover:text-white delay-100">
+                  Acheter maintenant
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-white border-transparent rounded-lg  lg:w-4/12 shadow-xl sm:w-8/12 ml-2 shadow-lg">
+    <div class="flex flex-col bg-gradient-to-b from-gray-300 to-gray-100 uppercase text-gray-800 border-b-2 border-gray-300 rounded-tl-lg rounded-tr-lg p-2">
+      <h1 class="font-semibold uppercase text-gray-600">Ajouter un avis</h1>
+    </div>
+    <div class="p-5 flex">
+      <button *ngFor="let i of [].constructor(5); let index = index" (click)="starsRating(index)">
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" class="starRating w-4 text-yellow-500 mr-1" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+          <path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path>
+        </svg>
+      </button>
+      <button (click)="CommentSending()" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mr-2">Soumettre</button>
+      <p id="messageComment"></p>
+    </div>
+    <input placeholder="Titre*" class="mx-5 p-2 border shadow rounded" [(ngModel)]="rating.title">
+    <div class="p-5">
+      <textarea class="w-full p-2 border shadow rounded" placeholder="Commentaire..." [(ngModel)]="rating.comment"></textarea>
+    </div>
+  </div>
+</div>
+
+<h1>{{attributsRating.length}} Avis</h1>
+<div *ngFor="let attribut of attributsRating">
+  <div>
+    <div class="flex">
+      <h3>{{attribut.title}}</h3>
+      <svg *ngFor="let i of [].constructor(+attribut.rating_number)" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" class="w-4 text-yellow-500 mr-1" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+        <path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+      </svg>
+      <svg *ngFor="let i of [].constructor(5- +attribut.rating_number)" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" class="w-4 text-yellow-500 mr-1" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+        <path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path>
+      </svg>
+    </div>
+    <p>{{attribut.comments}}</p>
+    <p>{{attribut.created}}</p>
+  </div>
+</div>
+
+<div *ngIf="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+  <div class="relative w-auto my-6 mx-auto max-w-6xl">
+    <!--content-->
+    <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full p-8 bg-white outline-none focus:outline-none">
+      <!--header-->
+      <div class="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+        <h3 class="text-3xl font-semibold">
+          Paiement
+        </h3>
+        <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" (click)="toggleModal()">
+          <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+            ×
+          </span>
+        </button>
+      </div>
+
+      <!--body-->
+      <div class="space-y-4">
+        <div class="w-full rounded-2xl bg-gray-50 px-4 ring-2 ring-gray-200">
+          <input
+            type="text"
+            placeholder="4242 4242 4242 4242"
+            class="my-3 w-full border-none bg-transparent outline-none focus:outline-none"
+            [(ngModel)]="cardNumber"
+          />
+        </div>
+        <div class="flex">
+          <div class="w-2/6 rounded-2xl bg-gray-50 px-4 ring-2 ring-gray-200 mr-6">
+            <input
+              type="text"
+              placeholder="09"
+              class="my-3 w-full border-none bg-transparent outline-none focus:outline-none"
+              [(ngModel)]="expiryMonth"
+            />
+          </div>
+          <div class="w-2/6 rounded-2xl bg-gray-50 px-4 ring-2 ring-gray-200 mr-6">
+            <input
+              type="text"
+              placeholder="24"
+              class="my-3 w-full border-none bg-transparent outline-none focus:outline-none"
+              [(ngModel)]="expiryYear"
+            />
+          </div>
+          <div class="w-2/6 rounded-2xl bg-gray-50 px-4 ring-2 ring-gray-200">
+            <input
+              type="text"
+              placeholder="667"
+              class="my-3 w-full border-none bg-transparent outline-none focus:outline-none"
+              [(ngModel)]="cvc"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!--footer-->
+      <div class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+        <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModal()">
+          Annuler
+        </button>
+        <button class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="getToken()">
+          Payer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>

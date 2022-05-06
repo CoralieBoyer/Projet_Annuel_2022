@@ -1,0 +1,45 @@
+<!-- Side bar-->
+<app-side-bar></app-side-bar>
+<!--Card-->
+<div class="flex flex-col items-center pt-3">
+  <h1 class="text-3xl font-bold mt-3 lg:pt-0 w-4/5">Toutes les prestations</h1>
+  <div class="w-4/5">
+    <div class="mx-auto lg:mx-0 w-5/12 pt-3 mb-6 border-b-2 border-blue-800 opacity-50"></div>
+  </div>
+
+  <div id='recipients' class="p-8 mt-12 lg:mt-0 rounded shadow bg-white w-4/5">
+
+
+    <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+      <thead>
+      <tr>
+        <th *ngFor="let title of header">{{title}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="text-center"></td>
+        <td class="px-3"><input class="text-center w-full border rounded" placeholder="Nom" [(ngModel)]="newAttributs.name"></td>
+        <td class="px-3"><input class="text-center w-full border rounded" placeholder="Image" [(ngModel)]="newAttributs.image"></td>
+        <td class="px-3"><textarea class="w-full border rounded" placeholder="Description" [(ngModel)]="newAttributs.description"></textarea></td>
+        <td class="px-3"><input class="text-center w-full border rounded" placeholder="Prix" [(ngModel)]="newAttributs.price"></td>
+        <td class="px-3"><input class="text-center w-full border rounded" placeholder="Quantité" [(ngModel)]="newAttributs.quantity"></td>
+        <td><a>Ajouter</a></td>
+      </tr>
+      <tr *ngFor="let attribut of attributs">
+        <td class="text-center">{{attribut.id_product}}</td>
+        <td class="text-center">{{attribut.name}}</td>
+        <td class="text-center">{{attribut.image}}</td>
+        <td class="text-center">{{attribut.description}}</td>
+        <td class="text-center">{{attribut.price}}</td>
+        <td class="text-center">{{attribut.quantity}}</td>
+        <td class="text-center"><a routerLink="{{'/partenaire/prestations/'+attribut.id_product}}">Voir +</a></td>
+      </tr>
+      </tbody>
+
+    </table>
+
+
+  </div>
+  <!--/Card-->
+</div>
