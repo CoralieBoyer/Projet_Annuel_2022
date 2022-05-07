@@ -33,6 +33,14 @@ if ($route === "profile") {
     }
 }
 
+if ($route === "prestation") {
+    include __DIR__ . "/controllers/prestation.php";
+    if ($method === "POST") {
+        Prestation::post();
+        die();
+    }
+}
+
 {
     include __DIR__ . "/../library/response.php";
     echo Response::json(404, ["Content-Type" => "application/json"], "Not found");
