@@ -23,7 +23,7 @@ class BasketModel{
     return $result;
   }
 
-  public static function getIdWithUser($id,$status){
+  public static function getAllWithUser($id,$status){
     $databaseConnection = Database::getConnection();
 
     $q = "SELECT CUSTOMER.id FROM CUSTOMER WHERE id_user = :id";
@@ -33,7 +33,7 @@ class BasketModel{
     ]);
     $customer = $req->fetch(PDO::FETCH_ASSOC);
 
-    $q = "SELECT id FROM BASKET WHERE id_customer = :id AND status=:status";
+    $q = "SELECT * FROM BASKET WHERE id_customer = :id AND status=:status";
     $req = $databaseConnection->prepare($q);
     $response = $req->execute([
       'id' => $customer['id'],
@@ -58,10 +58,11 @@ class BasketModel{
   public static function ChangeStatusAndAddNew($idBasket, $idCustomer){
     $databaseConnection = Database::getConnection();
 
-    $q = "UPDATE BASKET SET status = 1 WHERE id = :id";
+    $q = "UPDATE BASKET SET status = 1, date = :date WHERE id = :id";
     $req = $databaseConnection->prepare($q);
     $response = $req->execute([
-        'id' => $idBasket
+      'date' => date("Y-m-d H:i:s"),
+      'id' => $idBasket
     ]);
 
     $q = "INSERT INTO BASKET (id_customer,status) VALUES (:id,0)";

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import { ApiConnexionForAdmin } from '../services/api.service';
 
@@ -12,11 +12,11 @@ export class CustomersComponent implements OnInit {
   attributsCustomer!: {address: string, city: string, email:string, firstname: string, id: string, id_user: string, name: string, password:string, pay: string, phone_number: string,  username: string, zip_code: string};
   headerTabInfos = [ "ID", "Nom", "Prénom", "Email","Téléphone", "Actions"];
   headerTabAddress = ["N° rue", "Ville", "Code postale"];
-  attributsBasket!: {id: string, data_validation: string, count: string, name: string, points: string}[][];
-  idBaskets!: {id: string, date_validation: string}[];
+  attributsBasket!: {id: string, date: string, count: string, name: string, price: string}[][];
+  idBaskets!: {id: string, date: string}[];
   headerTabBasket = ["ID", "Date", "Produits"];
 
-  constructor(private apiConnexionForAdmin: ApiConnexionForAdmin, private route: ActivatedRoute) { }
+  constructor(private apiConnexionForAdmin: ApiConnexionForAdmin, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];
@@ -41,24 +41,25 @@ export class CustomersComponent implements OnInit {
     formData.append("id_user", id_user);
     formData.append("id", id);
     this.apiConnexionForAdmin.GestionUsersPostService(formData).subscribe(res=>{
-        message.innerHTML = res;
+        alert(res);
+        this.router.navigate(['/admin']);
       },
       err=>{
         console.log(err);
       });
   }
 
-  modify(id_user: string, name : string, password : string, firstname: string, email: string, phone_number: string, id: string){
+  modify(){
     let message = window.document.getElementById("message")!;
     const formData: FormData = new FormData();
     formData.append("action", "modify");
-    formData.append("id_user", id_user);
-    formData.append("name", name);
-    formData.append("password", password);
-    formData.append("firstname", firstname);
-    formData.append("email", email);
-    formData.append("phone_number", phone_number);
-    formData.append("id", id);
+    formData.append("id_user", this.attributsCustomer.id_user);
+    formData.append("name", this.attributsCustomer.name);
+    formData.append("password", this.attributsCustomer.password);
+    formData.append("firstname", this.attributsCustomer.firstname);
+    formData.append("email", this.attributsCustomer.email);
+    formData.append("phone_number", this.attributsCustomer.phone_number);
+    formData.append("id", this.attributsCustomer.id);
     this.apiConnexionForAdmin.GestionUsersPostService(formData).subscribe(res=>{
         message.innerHTML = res;
       },

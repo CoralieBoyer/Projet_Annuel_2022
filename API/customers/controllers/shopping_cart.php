@@ -10,7 +10,7 @@ class ShoppingCart{
   public static function post(){
     if($_POST['action'] == "getInfos"){
       $idCustomer = CustomerModel::getAllWithIdUser($_POST['id']);
-      $idBaskets = BasketModel::getIdWithUser($_POST['id'],0);
+      $idBaskets = BasketModel::getAllWithUser($_POST['id'],0);
       foreach($idBaskets as $basket){
           $baskets = BasketModel::getProduct($basket['id']);
       }

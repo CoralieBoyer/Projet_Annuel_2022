@@ -24,14 +24,14 @@
           </thead>
           <tbody>
           <tr>
-            <td class="text-center">{{attributsCustomer.id_user}}</td>
-            <td class="text-center">{{attributsCustomer.name}}</td>
-            <td class="text-center">{{attributsCustomer.firstname}}</td>
-            <td class="text-center">{{attributsCustomer.email}}</td>
-            <td class="text-center">{{attributsCustomer.phone_number}}</td>
+            <td class="text-center"><input class="text-center w-11/12" [(ngModel)]="attributsCustomer.id_user"></td>
+            <td class="text-center"><input class="text-center w-11/12" [(ngModel)]="attributsCustomer.name"></td>
+            <td class="text-center"><input class="text-center w-11/12" [(ngModel)]="attributsCustomer.firstname"></td>
+            <td class="text-center"><input class="text-center w-11/12" [(ngModel)]="attributsCustomer.email"></td>
+            <td class="text-center"><input class="text-center w-11/12" [(ngModel)]="attributsCustomer.phone_number"></td>
             <td class="text-center">
               <button (click)="delete(attributsCustomer.id_user, attributsCustomer.id)">Supprimer</button>
-              <button class="ml-4" (click)="modify(attributsCustomer.id_user, attributsCustomer.name, attributsCustomer.password, attributsCustomer.firstname, attributsCustomer.email, attributsCustomer.phone_number, attributsCustomer.id)">Modifier</button>
+              <button class="ml-4" (click)="modify()">Modifier</button>
             </td>
           </tr>
           </tbody>
@@ -83,18 +83,20 @@
               <li>Nom</li>
               <li>Prix</li>
               <li>Quantite</li>
+              <li>Total</li>
             </ul>
           </td>
         </tr>
         <tr *ngFor="let basket of idBaskets" class="border">
           <td class="text-center w-3/12 align-top">{{basket.id}}</td>
-          <td class="text-center w-3/12 align-top">{{basket.date_validation}}</td>
+          <td class="text-center w-3/12 align-top">{{basket.date}}</td>
           <div *ngFor="let product of attributsBasket[+basket.id]">
-            <td class="text-center w-3/12">
-              <ul class="flex justify-around">
+            <td class="pl-10 text-right w-3/12">
+              <ul class="flex justify-between w-full">
                 <li>{{product.name}}</li>
-                <li>{{product.points}} poinns</li>
+                <li>{{product.price}}€</li>
                 <li>{{product.count}}</li>
+                <li>{{+product.count * +product.price}}€</li>
               </ul>
             </td>
           </div>

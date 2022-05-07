@@ -13,7 +13,7 @@ class Customers{
 
   public static function post(){
     if($_POST['action'] == "getInfos"){
-      $idBaskets = BasketModel::getIdWithUser($_POST['id'], 1);
+      $idBaskets = BasketModel::getAllWithUser($_POST['id'], 1);
       $baskets = [];
       foreach($idBaskets as $basket){
           $baskets[$basket['id']] = BasketModel::getProduct($basket['id']);

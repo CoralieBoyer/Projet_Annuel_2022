@@ -14,7 +14,7 @@ class Product{
     }
 
     else if(isset($_POST['action']) && $_POST['action'] == 'addBasket'){
-      $idBasket = BasketModel::getIdWithUser($_POST['idUser'],0);
+      $idBasket = BasketModel::getAllWithUser($_POST['idUser'],0);
       $idBasket = $idBasket[0]['id'];
       BasketModel::InsertInclude($idBasket, $_POST['idProduct'], 1);
       $result = "ok";
