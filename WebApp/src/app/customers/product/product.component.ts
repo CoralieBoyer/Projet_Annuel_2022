@@ -78,7 +78,8 @@ export class ProductComponent implements OnInit {
         formData.append("comment", this.rating.comment);
         formData.append("user", this.idUser);
         this.apiConnexion.ProducePostService(formData).subscribe(res => {
-            message.innerHTML = "Commentaire ajouté. Rechargez la page pour le voir.";
+            this.ngOnInit();
+            message.innerHTML = "Commentaire ajouté.";
             message.className = "text-green-600";
           },
           err => {

@@ -9,7 +9,7 @@ import {CookieService} from "ngx-cookie-service";
 })
 export class PrestationsComponent implements OnInit {
   id = this.cookie.get('id');
-  header = ["#", "Nom", "Image", "Description", "Prix", "Quantité", "Action"];
+  header = ["#", "Nom", "Image", "Description", "Prix", "Quantité"];
   attributs!: {description: string, id_product: string, image: string, name: string, price: string, quantity: string}[];
   newAttributs = {description: "", id_product: "", image: "", name: "", price: "", quantity: ""};
 
@@ -21,6 +21,22 @@ export class PrestationsComponent implements OnInit {
     formData.append("id", this.id);
     this.apiConnexionForPartner.PrestationsPostService(formData).subscribe(res=>{
         this.attributs = res;
+        console.log(res);
+      },
+      err=>{
+        console.log(err);
+      });
+  }
+
+  add(){
+    const formData: FormData = new FormData();
+    formData.append("action", "add");
+    formData.append("name", this.newAttributs.name);
+    formData.append("description", this.newAttributs.description);
+    formData.append("price", this.newAttributs.price);
+    formData.append("quantity", this.newAttributs.quantity);
+    formData.append("id", this.id);
+    this.apiConnexionForPartner.PrestationsPostService(formData).subscribe(res=>{
         console.log(res);
       },
       err=>{

@@ -37,6 +37,7 @@ import {CookieService} from "ngx-cookie-service";
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {PaymentPageComponent} from "./customers/payment-page/payment-page.component";
+import { OneSignal } from 'onesignal-ngx';
 
 const appRoutes: Routes = [
   { path : '', component: HomePageComponent },
@@ -104,7 +105,7 @@ const appRoutes: Routes = [
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
   ],
   providers: [
     ConnexionService,
