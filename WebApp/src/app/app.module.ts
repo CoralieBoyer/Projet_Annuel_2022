@@ -38,6 +38,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {PaymentPageComponent} from "./customers/payment-page/payment-page.component";
 import { OneSignal } from 'onesignal-ngx';
+import { InvoicePdfComponent } from './customers/invoice-pdf/invoice-pdf.component';
 
 const appRoutes: Routes = [
   { path : '', component: HomePageComponent },
@@ -58,6 +59,7 @@ const appRoutes: Routes = [
   { path: 'panier', component: ShoppingCartComponent },
   { path: 'tests', component: TestsComponent },
   { path: 'payment', component: PaymentPageComponent },
+  { path: 'invoice/:idBasket', component: InvoicePdfComponent },
   { path: '**', redirectTo: '' }
 ];
 
@@ -88,7 +90,8 @@ const appRoutes: Routes = [
     StatistiquesComponent,
     PrestationComponent,
     PrestationsComponent,
-    SideBarComponent
+    SideBarComponent,
+    InvoicePdfComponent
   ],
   imports: [
     BrowserModule,

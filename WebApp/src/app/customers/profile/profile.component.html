@@ -8,15 +8,18 @@
   <div class="w-7/12">
     <h1 class="font-semibold uppercase text-gray-600">{{'Profile.OrderHistory'|translate}}</h1>
     <!-- -->
-    <div class="border-t mt-4" *ngFor="let basket of idBaskets">
+    <div class="border-t mt-4" *ngFor="let basket of idBaskets" id="{{basket.id}}">
       <div class="w-full flex justify-around">
         <p>commande n° {{basket.id}}</p>
-        <p>{{basket.date_validation}}</p>
+        <p>{{basket.date}}</p>
       </div>
       <div class="w-full flex" *ngFor="let product of attributsBasket[+basket.id]">
         <p class="pr-20">{{product.name}}</p>
         <p class="pr-20">{{'Profile.Quantity'|translate}}: {{product.count}}</p>
         <p>{{product.price}}€</p>
+      </div>
+      <div class="w-full flex justify-end">
+        <a routerLink="/invoice/{{basket.id}}" class="bg-blue-700 hover:bg-blue-900 text-white rounded py-2 px-4 text-center">Voir la facture</a>
       </div>
     </div>
     <!-- RETOURS -->

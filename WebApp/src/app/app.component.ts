@@ -8,9 +8,9 @@ import {OneSignal} from "onesignal-ngx";
 })
 export class AppComponent {
   title = 'WebApp';
-  constructor(private oneSignal: OneSignal) {
+  /*constructor(private oneSignal: OneSignal) {
     this.oneSignal.init({
       appId: "143381d9-3d3b-4d6f-85fc-b41930a66d26",
     });
-  }
+  }*/
 }

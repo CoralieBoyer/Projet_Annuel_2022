@@ -9,7 +9,7 @@ class Profile{
     public static function post(){
         $user = UserModel::getAllWithId($_POST['id']);
         if($_POST['action'] == "get"){
-            $idBaskets = BasketModel::getIdWithUser($_POST['id'],1);
+            $idBaskets = BasketModel::getAllWithUser($_POST['id'],1);
             $baskets = [];
             foreach($idBaskets as $basket){
                 $baskets[$basket['id']] = BasketModel::getProduct($basket['id']);

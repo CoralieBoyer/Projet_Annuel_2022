@@ -1,0 +1,36 @@
+<div class="w-full flex justify-between p-5">
+  <a routerLink="/profil" class="bg-blue-700 hover:bg-blue-900 text-white rounded py-2 px-4 text-center"><-- Revenir au profil</a>
+  <button (click)="createPDF()" class="bg-blue-700 hover:bg-blue-900 text-white rounded py-2 px-4 text-center">Télécharger en .PDF</button>
+</div>
+
+<div id="{{idBasket}}">
+  <h3 class="font-semibold text-3xl w-full text-center">Loyalty Card</h3>
+  <p class="text-xl pl-5">Numéro de commande : {{id}}</p>
+  <p class="text-xl pl-5">Date : {{date}}</p>
+  <div class="w-full flex justify-center pt-5">
+    <table class="table-auto w-2/3">
+      <thead>
+        <tr>
+          <th class="text-left p-2">Nom</th>
+          <th class="text-right p-2">Prix</th>
+          <th class="text-right p-2">Quantité</th>
+          <th class="text-right p-2">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of attributsBasket[+idBasket]">
+          <td class="text-left p-2">{{product.name}}</td>
+          <td class="text-right p-2">{{product.price}}€</td>
+          <td class="text-right p-2">{{product.count}}</td>
+          <td class="text-right p-2">{{+product.price * +product.count}}€</td>
+        </tr>
+      <tr>
+        <td class="text-left p-2"></td>
+        <td class="text-right p-2"></td>
+        <td class="text-right p-2"></td>
+        <td class="text-right p-2">Total : {{total}}€</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

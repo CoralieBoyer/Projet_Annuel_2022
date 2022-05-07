@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {CookieService} from "ngx-cookie-service";
 import {ApiConnexion} from "../services/api.service";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 @Component({
   selector: 'app-profile',
@@ -10,8 +12,8 @@ import {ApiConnexion} from "../services/api.service";
 export class ProfileComponent implements OnInit {
   attributsUser!: {id: string, name: string, email: string, password: string};
   attributsCustomer!: {id: string, firstname: string, address: string, city: string, phone_number: string, zip_code: string};
-  attributsBasket!: {id: string, data_validation: string, count: string, name: string, price: string}[][];
-  idBaskets!: {id: string, date_validation: string}[];
+  attributsBasket!: {id: string, data: string, count: string, name: string, price: string}[][];
+  idBaskets!: {id: string, date: string}[];
   password = {new: "", old: ""};
   id = this.cookie.get('id');
 
@@ -82,6 +84,19 @@ export class ProfileComponent implements OnInit {
           console.log(err);
         });
     }
+  }
+
+  public createPDF(idBasket: string): void {
+    let DATA: any = document.getElementById(idBasket);
+    html2canvas(DATA).then((canvas) => {
+      let fileWidth = 208;
+      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      PDF.save('angular-demo.pdf');
+    });
   }
 
 }
