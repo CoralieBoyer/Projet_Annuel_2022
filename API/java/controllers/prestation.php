@@ -1,6 +1,6 @@
 <?php
 
-include "../../models/product_model.php";
+include __DIR__ . "/../../models/product_model.php";
 
 class Prestation{
 
