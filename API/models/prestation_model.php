@@ -24,4 +24,15 @@ class PrestationModel{
         return $result;
     }
 
+    public static function insert($idProduct, $idPartner){
+        $databaseConnection = Database::getConnection();
+
+        $insert = "INSERT INTO PRESTATION (id_product,id_partner) VALUES (:id,:id_partner)";
+        $req = $databaseConnection->prepare($insert);
+        $response = $req->execute([ 
+            'id' => $idProduct,
+            'id_partner' => $idPartner
+        ]);
+    }
+
 }

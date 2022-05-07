@@ -12,19 +12,6 @@ export class ContributionComponent implements OnInit {
   saleData!: { name: string, value: number }[];
   turnover!: string;
 
-  showModal = false;
-  address!: string;
-  city!: string;
-  zip_code!: string;
-
-  cardNumber!: string;
-  expiryMonth!: string;
-  expiryYear!: string;
-  cvc!: string;
-  response!: {
-    client_ip: string,
-    card: { brand: string, country: string, exp_month: string, exp_year: string, last4: string }
-  };
 
   constructor(private apiConnexionForPartner: ApiConnexionForPartner, public cookie: CookieService) { }
 
@@ -41,55 +28,24 @@ export class ContributionComponent implements OnInit {
       });
   }
 
-  toggleModal() {
-    this.showModal = !this.showModal;
+  pay() {
+    if (this.turnover === undefined) {
+      alert("Veuillez entrer votre chiffre d'affaires.");
+    }else {
+      const formData: FormData = new FormData();
+      formData.append("action", "payment");
+      formData.append("id", this.id);
+      formData.append("turnover", this.turnover);
+      this.apiConnexionForPartner.ContributionPostService(formData).subscribe(res => {
+        if (res === "false")
+          alert("Vous avez deja payer la cautisation cette année.");
+        else
+          alert("Votre paiement de "+res+"€ a bien été effectué. Un justificatif pourra vous être demandé.");
+          this.ngOnInit();
+        },
+        err => {
+          console.log(err);
+        });
+    }
   }
-
-  getToken() {
-    (<any>window).Stripe.card.createToken({
-      number: this.cardNumber,
-      exp_month: this.expiryMonth,
-      exp_year: this.expiryYear,
-      cvc: this.cvc
-    }, (status: number, response: any) => {
-      if (status === 200) {
-        // API ///////////////////////////
-        this.response = response;
-        const formData: FormData = new FormData();
-        formData.append("action", "payment");
-        formData.append("id", this.id);
-        formData.append("number_credit_card", this.response.card.last4);
-        formData.append("brand", this.response.card.brand);
-        formData.append("country", this.response.card.country);
-        formData.append("exp_month", this.response.card.exp_month);
-        formData.append("exp_year", this.response.card.exp_year);
-        formData.append("client_ip", this.response.client_ip);
-        formData.append("turnover", this.turnover);
-        this.apiConnexionForPartner.ContributionPostService(formData).subscribe(res => {
-            console.log(res);
-            alert("Votre paiement a bien été effectué");
-            this.toggleModal();
-          },
-          err => {
-            console.log(err);
-          });
-        ///////////////////////////////
-      } else {
-        console.log(response.error.message);
-        alert("Votre paiement a échoué, vérifiez vos informations.");
-      }
-    });
-  }
-
-  addContribution(){
-    const formData: FormData = new FormData();
-    formData.append("action", "addContribution");
-    formData.append("id", this.id);
-    formData.append("turnover", this.turnover);
-    this.apiConnexionForPartner.ContributionPostService(formData).subscribe(res=>{
-        console.log(res);
-      },
-      err=>{
-        console.log(err);
-      });
-  }}
+}

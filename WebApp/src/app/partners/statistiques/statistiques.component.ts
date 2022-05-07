@@ -20,7 +20,6 @@ export class StatistiquesComponent implements OnInit {
   firstContribution = this.now;
   select = [] as any;
   saleData!: {name: string, value: string}[];
-  multiplicator = 1;
 
   constructor(private apiConnexionForPartner: ApiConnexionForPartner, public cookie: CookieService) { }
 

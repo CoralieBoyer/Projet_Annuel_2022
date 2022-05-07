@@ -101,18 +101,30 @@ class ProductModel{
     return $result;
   }
 
-  public static function insert($name,$actual_price,$description,$image,$id){
+  public static function insert($name,$price,$description,$image,$quantity){
       $databaseConnection = Database::getConnection();
 
-    $q = "INSERT INTO PRODUCT(name, actual_price, description, image, id_partner) VALUES (:name, :actual_price, :description, :image, :id_partner)";
+    $q = "INSERT INTO PRODUCT(name, price, description, image, quantity) VALUES (:name, :price, :description, :image, :quantity)";
     $req = $databaseConnection->prepare($q);
     $response = $req->execute([
     'name' => $name,
-    'actual_price' => $actual_price,
+    'price' => $price,
     'description' => $description,
     'image' => $image,
-    'id_partner' => $id
+    'quantity' => $quantity
     ]);
+
+    $q = "SELECT id FROM PRODUCT WHERE name = :name AND price = :price AND description = :description AND image = :image AND quantity = :quantity";
+    $req = $databaseConnection->prepare($q);
+    $response = $req->execute([
+    'name' => $name,
+    'price' => $price,
+    'description' => $description,
+    'image' => $image,
+    'quantity' => $quantity
+    ]);
+    $result = $req->fetch(PDO::FETCH_ASSOC);
+    return $result['id'];
   }
 
   public static function deletePrestation($id){
