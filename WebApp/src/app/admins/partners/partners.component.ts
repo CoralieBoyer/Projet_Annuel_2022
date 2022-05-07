@@ -54,18 +54,18 @@ export class PartnersComponent implements OnInit {
       });
   }
 
-  modify(email : string, id_user: string, name : string, password : string, siret: string, status: string, id: string){
+  modify(){
     let message = window.document.getElementById("message")!;
     const formData: FormData = new FormData();
     formData.append("action", "modify");
-    formData.append("id_user", id_user);
-    formData.append("name", name);
-    formData.append("email", email);
-    formData.append("password", password);
-    formData.append("siret", siret);
-    formData.append("status", status);
-    formData.append("id", id);
-    this.apiConnexionForAdmin.GestionUsersPostService(formData).subscribe(res=>{
+    formData.append("id_user", this.attributsPartner.id_user);
+    formData.append("name", this.attributsPartner.name);
+    formData.append("email", this.attributsPartner.email);
+    formData.append("password", this.attributsPartner.password);
+    formData.append("siret", this.attributsPartner.siret);
+    formData.append("status", this.attributsPartner.status);
+    formData.append("id", this.attributsPartner.id);
+    this.apiConnexionForAdmin.GestionPartnersPostService(formData).subscribe(res=>{
         message.innerHTML = res;
       },
       err=>{

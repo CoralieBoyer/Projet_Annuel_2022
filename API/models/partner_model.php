@@ -39,7 +39,7 @@ class PartnerModel{
     ]);
   }
 
-  public static function delete($id){ //FAIRE AUSSI POUR CLIENT
+  public static function delete($id){
     $databaseConnection = Database::getConnection();
 
     $q = "DELETE FROM PARTNER WHERE id = :id";

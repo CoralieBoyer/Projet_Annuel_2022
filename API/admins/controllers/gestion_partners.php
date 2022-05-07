@@ -20,17 +20,17 @@ class Partners{
         'cautisations' => PartnerModel::getContributionWithId($user['id'])
       ];
     }
-    if($_POST['action'] == "modify"){
-      UserModel::modify($_POST['name'], $_POST['email'], $_POST['password'], $_POST['id_user']);
+    elseif($_POST['action'] == "modify"){
+      UserModel::modify($_POST['name'], $_POST['email'], $_POST['id_user']);
       PartnerModel::modify($_POST['siret'], $_POST['status'], $_POST['id']);
       $result = 'Modifications effectuées.';
     }
-    if($_POST['action'] == "delete"){
-      UserModel::delete($_POST['id_user']);
+    elseif($_POST['action'] == "delete"){
       PartnerModel::delete($_POST['id']);
+      UserModel::delete($_POST['id_user']);
       $result = 'Suppression effectuée.';
     }
-    if($_POST['action'] == "deleteProduct"){
+    elseif($_POST['action'] == "deleteProduct"){
       $result = ProductModel::deletePrestation($_POST['id']);
       $result = 'Suppression effectuée.';
     }

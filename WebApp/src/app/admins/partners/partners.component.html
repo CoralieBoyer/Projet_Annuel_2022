@@ -23,14 +23,14 @@
           </thead>
           <tbody>
           <tr>
-            <td class="text-center">{{attributsPartner.id_user}}</td>
-            <td class="text-center">{{attributsPartner.name}}</td>
-            <td class="text-center">{{attributsPartner.siret}}</td>
-            <td class="text-center">{{attributsPartner.status}}</td>
-            <td class="text-center">{{attributsPartner.email}}</td>
+            <td><input class="text-center w-11/12" [(ngModel)]="attributsPartner.id_user"></td>
+            <td><input class="text-center w-11/12" [(ngModel)]="attributsPartner.name"></td>
+            <td><input class="text-center w-11/12" [(ngModel)]="attributsPartner.siret"></td>
+            <td><input class="text-center w-11/12" [(ngModel)]="attributsPartner.status"></td>
+            <td ><input [(ngModel)]="attributsPartner.email"></td>
             <td class="text-center">
               <button (click)="delete(attributsPartner.id_user, attributsPartner.id)">Supprimer</button>
-              <button class="ml-4" (click)="modify(attributsPartner.id_user, attributsPartner.name, attributsPartner.email, attributsPartner.password, attributsPartner.siret, attributsPartner.status, attributsPartner.id)">Modifier</button>
+              <button class="ml-4" (click)="modify()">Modifier</button>
             </td>
           </tr>
           </tbody>

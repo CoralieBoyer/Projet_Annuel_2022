@@ -116,15 +116,14 @@ class UserModel{
     ]);
   }
 
-  public static function modify($name, $email, $password, $id){
+  public static function modify($name, $email, $id){
     $databaseConnection = Database::getConnection();
 
-    $q = "UPDATE USER SET name = :name, email = :email, password = :password WHERE id = :id";
+    $q = "UPDATE USER SET name = :name, email = :email WHERE id = :id";
     $req = $databaseConnection->prepare($q);
     $response = $req->execute([
       'name' => $name,
       'email' => $email,
-      'password' => hash('sha512', $password),
       'id' => $id
     ]);
   }
@@ -141,7 +140,7 @@ class UserModel{
   }
 
   public static function delete($id){
-        $databaseConnection = Database::getConnection();
+    $databaseConnection = Database::getConnection();
 
     $q = "DELETE FROM USER WHERE id = :id";
     $req = $databaseConnection->prepare($q);
