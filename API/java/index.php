@@ -17,26 +17,18 @@ $route = $_REQUEST["route"] ?? "home";
  */
 $method = $_SERVER["REQUEST_METHOD"];
 
-if ($route === "statistiques") {
-    include __DIR__ . "/controllers/statistiques.php";
+if ($route === "product") {
+    include __DIR__ . "/controllers/product.php";
     if ($method === "POST") {
-        Statistiques::post();
+        Product::post();
         die();
     }
 }
 
-if ($route === "prestations") {
-    include __DIR__ . "/controllers/prestations.php";
+if ($route === "profile") {
+    include __DIR__ . "/controllers/profile.php";
     if ($method === "POST") {
-        Prestations::post();
-        die();
-    }
-}
-
-if ($route === "contributions") {
-    include __DIR__ . "/controllers/contributions.php";
-    if ($method === "POST") {
-        Contributions::post();
+        Profile::post();
         die();
     }
 }
