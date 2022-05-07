@@ -27,6 +27,10 @@ class ShoppingCart{
       $idCustomer = CustomerModel::getAllWithIdUser($_POST['id']);
       BasketModel::ChangeStatusAndAddNew($_POST['id_basket'], $idCustomer['id']);
     }
+
+    if($_POST['action'] == "delete"){
+      BasketModel::deleteInclude($_POST['id_basket'], $_POST['id_product']);
+    }
   }
 
 }

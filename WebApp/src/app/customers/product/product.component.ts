@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {ApiConnexion} from "../services/api.service";
 import {CookieService} from "ngx-cookie-service";
@@ -28,7 +28,7 @@ export class ProductComponent implements OnInit {
     card: { brand: string, country: string, exp_month: string, exp_year: string, last4: string }
   };
 
-  constructor(private apiConnexion: ApiConnexion, private route: ActivatedRoute, public cookie: CookieService) {
+  constructor(private apiConnexion: ApiConnexion, private route: ActivatedRoute, public cookie: CookieService, private router: Router) {
   }
 
   rating = { note : "" , title: "", comment: ""};
@@ -92,8 +92,20 @@ export class ProductComponent implements OnInit {
     this.showModal = !this.showModal;
   }
 
-  getToken() {
+  addBasket(){
+    const formData: FormData = new FormData();
+    formData.append("action", "addBasket");
+    formData.append("idProduct", this.id);
+    formData.append("idUser", this.idUser);
+    this.apiConnexion.ProducePostService(formData).subscribe(res => {
+        alert("Produit ajouté au panier.");
+      },
+      err => {
+        console.log(err);
+      });
+  }
 
+  getToken() {
     (<any>window).Stripe.card.createToken({
       number: this.cardNumber,
       exp_month: this.expiryMonth,
@@ -116,8 +128,11 @@ export class ProductComponent implements OnInit {
         formData.append("amount", this.attributsProduce.price);
         formData.append("id_product", this.id);
         this.apiConnexion.ProducePostService(formData).subscribe(res => {
-            console.log(res);
-            //this.router.navigate(['stripe']);
+            console.log("reoind" + res);
+            // navigate and reload page
+            this.router.navigate(['payment']).then(() => {
+              window.location.reload();
+            });
           },
           err => {
             console.log(err);

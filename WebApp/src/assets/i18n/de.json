@@ -1,0 +1,59 @@
+{
+	"Header": {
+		"CustomerSpace": "Kundenbereich",
+		"Home": "Startseite",
+		"Login": "Anmeldung",
+		"Logout": "Abmelden",
+		"Prestations": "Leistungen",
+		"Products": "Produkte",
+		"ShoppingCart": "Warenkorb"
+	},
+	"Home": {
+		"Partners": "PARTNER",
+		"Products": "PRODUKTE",
+		"Services": "LEISTUNGEN"
+	},
+	"Product": {
+		"By": "Von",
+		"MoreDetails": "Mehr Details",
+		"Points": "Punkte"
+	},
+	"Profile": {
+		"ChangePasswd": "Passwort ändern",
+		"Infos": "Meine Infos",
+		"Modify": "Bearbeiten",
+		"OrderHistory": "Verlauf der Bestellungen",
+		"OrderN°": "Bestellung Nr. ",
+		"Quantity": "Menge",
+		"Security": "Sicherheit"
+	},
+	"ShoppingCart": {
+		"CommandeDetails": {
+			"Question": "Die Gesamtkosten der Bestellung werden nach der Lieferadresse berechnet.",
+			"TVA": "Umsatzsteuer",
+			"Title": "Details zur Bestellung",
+			"TotalHT": "Gesamt ohne MwSt.",
+			"TotalTTC": "Gesamtbetrag inkl. MwSt.",
+			"Validate": "Warenkorb bestätigen"
+		},
+		"Delivery": {
+			"Address": "Wohnanschrift",
+			"City": "Stadt",
+			"PostalCode": "Postleitzahl",
+			"Title": "Informationen zur Lieferung"
+		},
+		"LoyaltyPoints": {
+			"Available": "Verfügbar",
+			"Button": "Ihre Punkte verwenden",
+			"Points": "Punkte",
+			"Question": "Wie viele Loyalty Points möchten Sie verwenden?"
+		},
+		"Product": {
+			"Delete": "Löschen",
+			"Price": "Preis",
+			"Product": "Produkt",
+			"Quantity": "Menge",
+			"Total": "Gesamt"
+		}
+	}
+}

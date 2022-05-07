@@ -34,6 +34,10 @@ export class ShoppingCartComponent implements OnInit {
   constructor(private apiConnexion: ApiConnexion, public cookie: CookieService, private router: Router) { }
 
   ngOnInit(): void {
+    this.initData();
+  }
+
+  initData() {
     const formData: FormData = new FormData();
     formData.append("action", "getInfos");
     formData.append("id", this.idUser);
@@ -52,8 +56,18 @@ export class ShoppingCartComponent implements OnInit {
       });
   }
 
-  delete(){
-    console.log("produit supprimé");
+  delete(idProduct: string) {
+    const formData: FormData = new FormData();
+    formData.append("action", "delete");
+    formData.append("id_product", idProduct);
+    formData.append("id_basket", this.idBasket);
+    this.apiConnexion.ShoppingCartPostService(formData).subscribe(res => {
+        this.initData();
+        window.location.reload();
+      },
+      err => {
+        console.log(err);
+      });
   }
 
   quantity(id : string, count: string){
@@ -98,7 +112,9 @@ export class ShoppingCartComponent implements OnInit {
         formData.append("id_basket", this.idBasket);
         this.apiConnexion.ShoppingCartPostService(formData).subscribe(res => {
             console.log(res);
-            //this.router.navigate(['stripe']);
+            this.router.navigate(['payment']).then(() => {
+              window.location.reload();
+            });
           },
           err => {
             console.log(err);

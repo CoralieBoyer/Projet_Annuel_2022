@@ -26,7 +26,7 @@ import { StatistiquesComponent } from './partners/statistiques/statistiques.comp
 import { PrestationComponent } from './partners/prestation/prestation.component';
 import { PrestationsComponent } from './partners/prestations/prestations.component';
 import { SideBarComponent } from './partners/side-bar/side-bar.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule, Routes} from "@angular/router";
@@ -34,6 +34,9 @@ import {NgxChartsModule} from "@swimlane/ngx-charts";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ConnexionService, InscriptionService} from "./customers/services/login.service";
 import {CookieService} from "ngx-cookie-service";
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {PaymentPageComponent} from "./customers/payment-page/payment-page.component";
 
 const appRoutes: Routes = [
   { path : '', component: HomePageComponent },
@@ -52,7 +55,9 @@ const appRoutes: Routes = [
   { path: 'objets', component: CatalogObjectsComponent },
   { path: 'profil', component: ProfileComponent },
   { path: 'panier', component: ShoppingCartComponent },
-  { path: 'tests', component: TestsComponent }
+  { path: 'tests', component: TestsComponent },
+  { path: 'payment', component: PaymentPageComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 
@@ -93,6 +98,13 @@ const appRoutes: Routes = [
     FormsModule,
     NgxChartsModule,
     BrowserAnimationsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     ConnexionService,
@@ -104,3 +116,7 @@ const appRoutes: Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}

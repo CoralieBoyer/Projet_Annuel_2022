@@ -71,6 +71,29 @@ class BasketModel{
     ]);
   }
 
+  public static function InsertInclude($idBasket, $idProduct, $count){
+    $databaseConnection = Database::getConnection();
+
+    $q = "INSERT INTO INCLUDE (count, id_basket, id_product) VALUES (:count, :idBasket, :idProduct)";
+    $req = $databaseConnection->prepare($q);
+    $response = $req->execute([
+        'count' => $count,
+        'idBasket' => $idBasket,
+        'idProduct' => $idProduct
+    ]);
+  }
+
+  public static function deleteInclude($idBasket, $idProduct){
+    $databaseConnection = Database::getConnection();
+
+    $q = "DELETE FROM INCLUDE WHERE id_basket = :idBasket AND id_product = :idProduct";
+    $req = $databaseConnection->prepare($q);
+    $response = $req->execute([
+        'idBasket' => $idBasket,
+        'idProduct' => $idProduct
+    ]);
+  }
+
 }
 
 ?>

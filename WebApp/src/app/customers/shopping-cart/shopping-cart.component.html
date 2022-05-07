@@ -8,13 +8,12 @@
         <thead>
         <tr class="h-12 uppercase">
           <th class="hidden md:table-cell"></th>
-          <th class="text-left">Produit</th>
+          <th class="text-left">{{'ShoppingCart.Product.Product'|translate}}</th>
           <th class="lg:text-right text-left pl-5 lg:pl-0">
-            <span class="lg:hidden" title="Quantity">Qtd</span>
-            <span class="hidden lg:inline">Quantité</span>
+            <span class="hidden lg:inline">{{'ShoppingCart.Product.Quantity'|translate}}</span>
           </th>
-          <th class="hidden text-right md:table-cell">Prix</th>
-          <th class="text-right">Total</th>
+          <th class="hidden text-right md:table-cell">{{'ShoppingCart.Product.Price'|translate}}</th>
+          <th class="text-right">{{'ShoppingCart.Product.Total'|translate}}</th>
         </tr>
         </thead>
         <tbody>
@@ -25,8 +24,8 @@
           <td>
             <a [routerLink]="'/produit/'+attribut.id_product" class="mb-2 md:ml-4">{{attribut.name}}</a>
             <form action="" method="POST">
-              <button (click)="delete()" type="submit" class="text-red-700 md:ml-4">
-                <small>(Supprimer)</small>
+              <button (click)="delete(attribut.id_product)" type="submit" class="text-red-700 md:ml-4">
+                <small>({{'ShoppingCart.Product.Delete'|translate}})</small>
               </button>
             </form>
           </td>
@@ -40,12 +39,12 @@
           </td>
           <td class="hidden text-right md:table-cell">
               <span class="text-sm lg:text-base font-medium">
-                {{attribut.price}} €
+                {{attribut.price}}€
               </span>
           </td>
           <td class="text-right">
               <span class="text-sm lg:text-base font-medium">
-                {{+attribut.price * +attribut.count}} €
+                {{+attribut.price * +attribut.count}}€
               </span>
           </td>
         </tr>
@@ -58,45 +57,45 @@
             <h1 class="ml-2 font-bold uppercase">Loyalty Points</h1>
           </div>
           <div class="p-4">
-            <p class="mb-4 italic">Combien de Loyalty Points voulez-vous utiliser ?</p>
+            <p class="mb-4 italic">{{'ShoppingCart.LoyaltyPoints.Question'|translate}}</p>
             <div class="justify-center md:flex">
               <form action="" method="POST">
                 <div class="flex items-center w-full h-13 pl-3 bg-white bg-gray-100 border rounded-full">
                   <input type="number" min="0" max="{{totalPoints}}" name="code" [(ngModel)]="points" id="coupon" placeholder="Loyalty Points"
-                         class="w-full bg-gray-100 outline-none appearance-none focus:outline-none active:outline-none"/>
+                         class="w-full bg-white outline-none appearance-none focus:outline-none active:outline-none"/>
                   <button  type="submit" class="text-sm flex items-center px-3 py-1 text-white bg-gray-800 rounded-full outline-none md:px-4 active:outline-none">
                     <svg aria-hidden="true" data-prefix="fas" data-icon="gift" class="w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 448c0 17.7 14.3 32 32 32h160V320H32v128zm256 32h160c17.7 0 32-14.3 32-32V320H288v160zm192-320h-42.1c6.2-12.1 10.1-25.5 10.1-40 0-48.5-39.5-88-88-88-41.6 0-68.5 21.3-103 68.3-34.5-47-61.4-68.3-103-68.3-48.5 0-88 39.5-88 88 0 14.5 3.8 27.9 10.1 40H32c-17.7 0-32 14.3-32 32v80c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-80c0-17.7-14.3-32-32-32zm-326.1 0c-22.1 0-40-17.9-40-40s17.9-40 40-40c19.9 0 34.6 3.3 86.1 80h-86.1zm206.1 0h-86.1c51.4-76.5 65.7-80 86.1-80 22.1 0 40 17.9 40 40s-17.9 40-40 40z"/></svg>
-                    <span class="font-medium">Utiliser vos points</span>
+                    <span class="font-medium">{{'ShoppingCart.LoyaltyPoints.Button'|translate}}</span>
                   </button>
                 </div>
                 <div class="flex items-center w-full h-13 pl-3 pt-3">
-                  <p class="italic">Disponible : {{totalPoints}} Points</p>
+                  <p class="italic">{{'ShoppingCart.LoyaltyPoints.Available'|translate}} : {{totalPoints}} {{'ShoppingCart.LoyaltyPoints.Points'|translate}}</p>
                 </div>
               </form>
             </div>
           </div>
           <div class="p-4 mt-6 bg-gray-100 rounded-full">
-            <h1 class="ml-2 font-bold uppercase">Informations de livraison</h1>
+            <h1 class="ml-2 font-bold uppercase">{{'ShoppingCart.Delivery.Title'|translate}}</h1>
           </div>
           <div class="p-4">
-            <label>Adresse<label class="text-red-700">*</label></label>
-            <input [(ngModel)]="address" class="w-full p-2 bg-gray-100 rounded" placeholder="Adresse">
-            <label>Code postal<label class="text-red-700">*</label></label>
-            <input [(ngModel)]="zip_code" type="number" min="01000" max="97617" class="w-full p-2 bg-gray-100 rounded" placeholder="Code postal">
-            <label>Ville<label class="text-red-700">*</label></label>
-            <input [(ngModel)]="city" class="w-full p-2 bg-gray-100 rounded" placeholder="Ville">
+            <label>{{'ShoppingCart.Delivery.Address'|translate}}<label class="text-red-700">*</label></label>
+            <input [(ngModel)]="address" class="w-full p-2 bg-gray-100 rounded" placeholder="{{'ShoppingCart.Delivery.Address'|translate}}">
+            <label>{{'ShoppingCart.Delivery.PostalCode'|translate}}<label class="text-red-700">*</label></label>
+            <input [(ngModel)]="zip_code" type="number" min="01000" max="97617" class="w-full p-2 bg-gray-100 rounded" placeholder="{{'ShoppingCart.Delivery.PostalCode'|translate}}">
+            <label>{{'ShoppingCart.Delivery.City'|translate}}<label class="text-red-700">*</label></label>
+            <input [(ngModel)]="city" class="w-full p-2 bg-gray-100 rounded" placeholder="{{'ShoppingCart.Delivery.City'|translate}}">
             <p class="pl-3 pt-3 text-red-700 italic" id="deliveryMessage"></p>
           </div>
         </div>
         <div class="lg:px-2 lg:w-1/2">
           <div class="p-4 bg-gray-100 rounded-full">
-            <h1 class="ml-2 font-bold uppercase">Details de la commande</h1>
+            <h1 class="ml-2 font-bold uppercase">{{'ShoppingCart.CommandeDetails.Title'|translate}}</h1>
           </div>
           <div class="p-4">
-            <p class="mb-6 italic">Le coût total de la commande sera calculé en fonction de l'adresse de livraison.</p>
+            <p class="mb-6 italic">{{'ShoppingCart.CommandeDetails.Question'|translate}}</p>
             <div class="flex justify-between border-b">
               <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-                Total HT
+                {{'ShoppingCart.CommandeDetails.TotalHT'|translate}}
               </div>
               <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
                 {{(total*0.8).toFixed(2)}}€
@@ -104,7 +103,7 @@
             </div>
             <div class="flex justify-between pt-4 border-b">
               <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-                TVA
+                {{'ShoppingCart.CommandeDetails.TVA'|translate}}
               </div>
               <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
                 {{(0.2*(total)).toFixed(2)}}€
@@ -125,7 +124,7 @@
             </div>
             <div class="flex justify-between pt-4 border-b">
               <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-                Total HT
+                {{'ShoppingCart.CommandeDetails.TotalHT'|translate}}
               </div>
               <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
                 {{total*0.8-points*0.2 < 0 ? 0 : (total*0.8-points*0.2).toFixed(2)}}€
@@ -133,7 +132,7 @@
             </div>
             <div class="flex justify-between pt-4 border-b">
               <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-                TVA
+                {{'ShoppingCart.CommandeDetails.TVA'|translate}}
               </div>
               <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
                 {{0.2*(total-points) < 0 ? 0 : (0.2*(total-points)).toFixed(2)}}€
@@ -141,7 +140,7 @@
             </div>
             <div class="flex justify-between pt-4 border-b">
               <div class="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-                Total TTC
+                {{'ShoppingCart.CommandeDetails.TotalTTC'|translate}}
               </div>
               <div class="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
                 {{(total-points*0.2).toFixed(2)}}€
@@ -150,7 +149,7 @@
             <p id="message" class="text-red-700 italic mt-3"></p>
             <button (click)="toggleModal()" class="flex justify-center mt-3 w-full px-10 py-3 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
               <svg aria-hidden="true" data-prefix="far" data-icon="credit-card" class="w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M527.9 32H48.1C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48.1 48h479.8c26.6 0 48.1-21.5 48.1-48V80c0-26.5-21.5-48-48.1-48zM54.1 80h467.8c3.3 0 6 2.7 6 6v42H48.1V86c0-3.3 2.7-6 6-6zm467.8 352H54.1c-3.3 0-6-2.7-6-6V256h479.8v170c0 3.3-2.7 6-6 6zM192 332v40c0 6.6-5.4 12-12 12h-72c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h72c6.6 0 12 5.4 12 12zm192 0v40c0 6.6-5.4 12-12 12H236c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h136c6.6 0 12 5.4 12 12z"/></svg>
-              <span class="ml-2 mt-5px">Valider le panier</span>
+              <span class="ml-2 mt-5px">{{'ShoppingCart.CommandeDetails.Validate'|translate}}</span>
             </button>
           </div>
         </div>

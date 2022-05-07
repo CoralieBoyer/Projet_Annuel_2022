@@ -9,8 +9,8 @@ import {ApiConnexion} from '../services/api.service';
 })
 export class HomePageComponent implements OnInit {
   attributsPartner!: {id: string, id_user: string, name: string, siret: string, email: string, password: string, logo: string, link: string  }[];
-  attributsPrestation!: {id: string, id_partner: string, id_product: string, name: string, reduction: string, points: string, description: string, image: string }[];
-  attributsObjects!: {id: string, id_product: string, name: string, actual_price: string, points: string, description: string, image: string }[];
+  attributsPrestation!: {id: string, id_partner: string, id_product: string, name: string, reduction: string, price: string, description: string, image: string }[];
+  attributsObjects!: {id: string, id_product: string, name: string, price: string, points: string, description: string, image: string }[];
 
   constructor(private apiConnexion: ApiConnexion) { }
 

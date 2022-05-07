@@ -1,0 +1,59 @@
+{
+	"Header": {
+		"CustomerSpace": "Customer space",
+		"Home": "Home",
+		"Login": "Login",
+		"Logout": "Logout",
+		"Prestations": "Services",
+		"Products": "Products",
+		"ShoppingCart": "Shopping Cart"
+	},
+	"Home": {
+		"Partners": "PARTNERS",
+		"Products": "PRODUCTS",
+		"Services": "SERVICES"
+	},
+	"Product": {
+		"By": "By",
+		"MoreDetails": "More details",
+		"Points": "Points"
+	},
+	"Profile": {
+		"ChangePasswd": "Change your password",
+		"Infos": "My info",
+		"Modify": "Edit",
+		"OrderHistory": "Order History",
+		"OrderN°": "Order no.",
+		"Quantity": "Quantity",
+		"Security": "Security"
+	},
+	"ShoppingCart": {
+		"CommandeDetails": {
+			"Question": "The total cost of the order will be calculated according to the delivery address.",
+			"TVA": "VAT",
+			"Title": "Details of the order",
+			"TotalHT": "TOTAL excl. VAT",
+			"TotalTTC": "Total incl. VAT",
+			"Validate": "Validate the basket"
+		},
+		"Delivery": {
+			"Address": "Address",
+			"City": "City",
+			"PostalCode": "Postal code",
+			"Title": "Delivery information"
+		},
+		"LoyaltyPoints": {
+			"Available": "Available",
+			"Button": "Use your points",
+			"Points": "Points",
+			"Question": "How many Loyalty Points do you want to use?"
+		},
+		"Product": {
+			"Delete": "Delete",
+			"Price": "Price",
+			"Product": "Product",
+			"Quantity": "Quantity",
+			"Total": "Total"
+		}
+	}
+}
