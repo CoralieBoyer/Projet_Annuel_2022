@@ -144,6 +144,37 @@ class ProductModel{
     
   }
 
+  public static function insertJava($name,$price,$description,$quantity,$id){
+    $databaseConnection = Database::getConnection();
+
+    $q = "INSERT INTO PRODUCT(name, price, description,quantity ) VALUES (:name, :price, :description, :quantity)";
+    $req = $databaseConnection->prepare($q);
+    $response = $req->execute([
+    'name' => $name,
+    'price' => $price,
+    'description' => $description,
+    'quantity' => $quantity
+    ]);
+
+
+    $q = "SELECT id FROM PRODUCT WHERE name = :name AND price = :price AND description = :description AND quantity = :quantity";
+    $req = $databaseConnection->prepare($q);
+    $response = $req->execute([
+    'name' => $name,
+    'price' => $price,
+    'description' => $description,
+    'quantity' => $quantity
+    ]);
+    $result = $req->fetch(PDO::FETCH_ASSOC);
+
+    $q = "INSERT INTO PRESTATION (id_partner,id_product) VALUES (:id_partner,:id_product)";
+    $req = $databaseConnection->prepare($q);
+    $response = $req->execute([
+    'id_partner' => $id,
+    'id_product' => $result['id']
+    ]);
+  }
+
 }
 
 ?>
