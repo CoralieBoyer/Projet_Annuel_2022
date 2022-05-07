@@ -2,6 +2,7 @@
 
 include __DIR__ . "/../../models/product_model.php";
 include __DIR__ . "/../../models/partner_model.php";
+include __DIR__ . "/../../models/prestation_model.php";
 
 class Product{
 
