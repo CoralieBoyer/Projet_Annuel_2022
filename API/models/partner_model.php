@@ -39,6 +39,18 @@ class PartnerModel{
     ]);
   }
 
+  public static function modifyPartnerInfos($siret, $status, $id){
+    $databaseConnection = Database::getConnection();
+
+    $q = "UPDATE PARTNER SET siret = :siret, status = :status WHERE id_user = :id";
+    $req = $databaseConnection->prepare($q);
+    $response = $req->execute([
+      'siret' => $siret,
+      'status' => $status,
+      'id' => $id
+    ]);
+  }
+
   public static function delete($id){
     $databaseConnection = Database::getConnection();
 

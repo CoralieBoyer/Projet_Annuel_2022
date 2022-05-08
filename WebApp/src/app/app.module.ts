@@ -23,7 +23,6 @@ import { ContactComponent } from './partners/contact/contact.component';
 import { ContributionComponent } from './partners/contribution/contribution.component';
 import { FaqComponent } from './partners/faq/faq.component';
 import { StatistiquesComponent } from './partners/statistiques/statistiques.component';
-import { PrestationComponent } from './partners/prestation/prestation.component';
 import { PrestationsComponent } from './partners/prestations/prestations.component';
 import { SideBarComponent } from './partners/side-bar/side-bar.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
@@ -51,7 +50,6 @@ const appRoutes: Routes = [
   { path: 'partenaire/contact', component: ContactComponent},
   { path: 'partenaire/contact/FAQ', component: FaqComponent},
   { path: 'partenaire/prestations', component: PrestationsComponent},
-  { path: 'partenaire/prestations/:id', component: PrestationComponent},
   { path: 'connexion', component: LoginComponent },
   { path: 'produit/:id', component: ProductComponent },
   { path: 'prestations', component: CatalogPrestationsComponent },
@@ -89,7 +87,6 @@ const appRoutes: Routes = [
     ContributionComponent,
     FaqComponent,
     StatistiquesComponent,
-    PrestationComponent,
     PrestationsComponent,
     SideBarComponent,
     InvoicePdfComponent
