@@ -178,10 +178,10 @@ public class Prestations extends SceneController {
         if (nameField.getText() == null || nameField.getText().isEmpty() || priceField.getText() == null || priceField.getText().isEmpty() || descriptionField.getText() == null || descriptionField.getText().isEmpty() || quantityField.getText() == null || quantityField.getText().isEmpty()) {
             userExistOrNo.setText("Veuillez remplir tous les champs");
             return null;
-        } else if (!priceField.getText().matches("[0-9]+")) {
+        } else if (!priceField.getText().matches("[1-9]+")) {
             priceField.setText("");
             userExistOrNo.setText("Le prix doit être un chiffre / nombre");
-        }else if (!quantityField.getText().matches("[0-9]+")) {
+        }else if (!quantityField.getText().matches("[1-9]+")) {
             quantityField.setText("");
             userExistOrNo.setText("La quantité doit être un chiffre / nombre");
         } else {
