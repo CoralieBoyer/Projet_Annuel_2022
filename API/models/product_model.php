@@ -144,6 +144,23 @@ class ProductModel{
     
   }
 
+  public static function deleteObject($id){
+    $databaseConnection = Database::getConnection();
+
+    $q = "DELETE FROM PRODUCT WHERE id = :id";
+    $req = $databaseConnection->prepare($q);
+    $response = $req->execute([
+      'id' => $id
+    ]);
+
+    $q = "DELETE FROM OBJECT WHERE id_product = :id";
+    $req = $databaseConnection->prepare($q);
+    $response = $req->execute([
+      'id' => $id
+    ]);
+    
+  }
+
   public static function insertJava($name,$price,$description,$quantity,$id){
     $databaseConnection = Database::getConnection();
 

@@ -69,6 +69,18 @@ if ($route === "admins") {
     }
 }
 
+if ($route === "products") {
+    include __DIR__ . "/controllers/gestion_products.php";
+    if ($method === "GET") {
+        Admins::get();
+        die();
+    }
+    if ($method === "POST") {
+        Admins::post();
+        die();
+    }
+}
+
 {
     include __DIR__ . "/../library/response.php";
     echo Response::json(404, ["Content-Type" => "application/json"], "Not found");

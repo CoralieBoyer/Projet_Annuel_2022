@@ -36,6 +36,13 @@ export class ApiConnexionForAdmin {
     return this.http.post<any>(this.link + this.port + this.pathLink + 'admins', fromData);
   }
 
+  GestionProductsGetService():Observable<any>{
+    return this.http.get(this.link + this.port + this.pathLink + 'products');
+  }
+  GestionProductsPostService(fromData: FormData):Observable<any>{
+    return this.http.post<any>(this.link + this.port + this.pathLink + 'products', fromData);
+  }
+
   AnalysesGetService():Observable<any>{
     return this.http.get(this.link + this.port + this.pathLink + 'analyses');
   }

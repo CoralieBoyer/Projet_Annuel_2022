@@ -39,6 +39,7 @@ import {PaymentPageComponent} from "./customers/payment-page/payment-page.compon
 import { OneSignal } from 'onesignal-ngx';
 import { InvoicePdfComponent } from './customers/invoice-pdf/invoice-pdf.component';
 import { NgxBarcode6Module } from 'ngx-barcode6';
+import { GestionProductsComponent } from './admins/gestion-products/gestion-products.component';
 
 const appRoutes: Routes = [
   { path : '', component: HomePageComponent },
@@ -89,7 +90,8 @@ const appRoutes: Routes = [
     StatistiquesComponent,
     PrestationsComponent,
     SideBarComponent,
-    InvoicePdfComponent
+    InvoicePdfComponent,
+    GestionProductsComponent
   ],
   imports: [
     BrowserModule,

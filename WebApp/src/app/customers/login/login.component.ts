@@ -98,10 +98,10 @@ export class LoginComponent implements OnInit {
           message.innerHTML = "Ce compte existe déjà.";
         }
         if (res == "partner"){
-          console.log("partner");
+          alert("Votre compte a été créé avec succès.");
         }
         if (res == "customer")
-          console.log("customer");
+          alert("Votre compte a été créé avec succès.");
       },
       err=>{
         console.log(err);
