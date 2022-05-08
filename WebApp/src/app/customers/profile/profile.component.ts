@@ -92,9 +92,9 @@ export class ProfileComponent implements OnInit {
       let fileWidth = 208;
       let fileHeight = (canvas.height * fileWidth) / canvas.width;
       const FILEURI = canvas.toDataURL('image/png');
-      let PDF = new jsPDF('p', 'mm', 'a4');
+      let PDF = new jsPDF('l', 'mm', [100, 60]);
       let position = 0;
-      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      PDF.addImage(FILEURI, 'PNG', 8, position, fileWidth, fileHeight);
       PDF.save('Loyalty-card.pdf');
     });
   }

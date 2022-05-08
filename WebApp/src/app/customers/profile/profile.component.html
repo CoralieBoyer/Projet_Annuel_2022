@@ -8,7 +8,7 @@
   <div class="w-full md:w-1/2">
     <h1 class="font-semibold uppercase text-gray-600">{{'Profile.Loyalty'|translate}}</h1>
     <div class="w-full flex justify-center md:justify-start" id="card">
-      <div class=" p-3 flex justify-end items-start flex-col rounded-xl w-2/3 md:w-2/5 my-5 bg-blue-800">
+      <div class=" p-3 flex justify-end items-start flex-col rounded-xl w-2/3 md:w-2/5 my-5 bg-cyan-600">
         <div class="flex justify-between flex-col w-full h-full">
           <div class="flex justify-between items-start">
             <div class="w-8 h-8 rounded-full border-2 border-white flex justify-center items-center">
@@ -19,7 +19,7 @@
             </div>
           </div>
           <div>
-            <p class="text-white font-light pt-5">
+            <p class="text-black font-light pt-5">
               {{attributsCustomer.firstname}} {{attributsUser.name}}
             </p>
             <div>
@@ -28,7 +28,6 @@
                 [bc-value]="attributsCustomer.loyalty_number"
                 [bc-display-value]="true"
                 [bc-background]="'transparent'"
-                [bc-line-color]="'white'"
                 [bc-height]="50"
                 [bc-width]="1.1"
                 [bc-font-size]="13"

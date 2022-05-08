@@ -14,7 +14,7 @@ class Inscritpion {
       UserModel::insert($_POST['newName'], $_POST['newPassword'], $_POST['newEmail']);
       $id = UserModel::getAllWithEmailPassword($_POST['newEmail'], $_POST['newPassword']);
       if(!empty($_POST['newFirstName'])){
-        $token = bin2hex(random_bytes(8));
+        $token = strtoupper(bin2hex(random_bytes(8)));
         CustomerModel::insert($_POST['newFirstName'], $_POST['newAddress'],$_POST['newCode'],$_POST['newCity'],$_POST['newPhoneNumber'],$token,$id['id']);
         echo json_encode("customer");
       }
