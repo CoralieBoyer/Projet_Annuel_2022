@@ -178,46 +178,53 @@ public class Prestations extends SceneController {
         if (nameField.getText() == null || nameField.getText().isEmpty() || priceField.getText() == null || priceField.getText().isEmpty() || descriptionField.getText() == null || descriptionField.getText().isEmpty() || quantityField.getText() == null || quantityField.getText().isEmpty()) {
             userExistOrNo.setText("Veuillez remplir tous les champs");
             return null;
-        }
-        var urlParameters = "action=" + "insertNewProductOrPrestation" + "&name=" + nameField.getText() + "&actual_price=" + priceField.getText() + "&description=" + descriptionField.getText() + "&quantity=" + quantityField.getText() + "&id=" + super.id;
-        byte[] postData = urlParameters.getBytes(StandardCharsets.UTF_8);
+        } else if (!priceField.getText().matches("[0-9]+")) {
+            priceField.setText("");
+            userExistOrNo.setText("Le prix doit être un chiffre / nombre");
+        }else if (!quantityField.getText().matches("[0-9]+")) {
+            quantityField.setText("");
+            userExistOrNo.setText("La quantité doit être un chiffre / nombre");
+        } else {
+            var urlParameters = "action=" + "insertNewProductOrPrestation" + "&name=" + nameField.getText() + "&actual_price=" + priceField.getText() + "&description=" + descriptionField.getText() + "&quantity=" + quantityField.getText() + "&id=" + super.id;
+            byte[] postData = urlParameters.getBytes(StandardCharsets.UTF_8);
 
-        try {
+            try {
 
-            var myurl = new URL(url);
-            con = (HttpURLConnection) myurl.openConnection();
+                var myurl = new URL(url);
+                con = (HttpURLConnection) myurl.openConnection();
 
-            con.setDoOutput(true);
-            con.setRequestMethod("POST");
-            con.setRequestProperty("User-Agent", "Java client");
-            con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                con.setDoOutput(true);
+                con.setRequestMethod("POST");
+                con.setRequestProperty("User-Agent", "Java client");
+                con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 
-            try (var wr = new DataOutputStream(con.getOutputStream())) {
+                try (var wr = new DataOutputStream(con.getOutputStream())) {
 
-                wr.write(postData);
-            }
-
-            try (var br = new BufferedReader(
-                    new InputStreamReader(con.getInputStream()))) {
-
-                String line;
-                this.content = new StringBuilder();
-
-                while ((line = br.readLine()) != null) {
-                    this.content.append(line);
-                    this.content.append(System.lineSeparator());
+                    wr.write(postData);
                 }
+
+                try (var br = new BufferedReader(
+                        new InputStreamReader(con.getInputStream()))) {
+
+                    String line;
+                    this.content = new StringBuilder();
+
+                    while ((line = br.readLine()) != null) {
+                        this.content.append(line);
+                        this.content.append(System.lineSeparator());
+                    }
+                }
+                userExistOrNo.setText(nameField.getText() + " " + "à été ajouté");
+                postToGetPrestations();
+            } finally {
+                con.disconnect();
             }
-            userExistOrNo.setText(nameField.getText() + "" + "a été ajouté");
-            postToGetPrestations();
-        } finally {
-            con.disconnect();
+
+
+            return url;
         }
-
-
         return url;
     }
-
     @FXML
     protected void onLeaveButtonClick() {
         super.onLeaveButtonClick();

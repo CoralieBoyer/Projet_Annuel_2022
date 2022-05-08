@@ -38,29 +38,43 @@
 }
 .button3:hover
 {
-    -fx-background-color : #1a4d4d;
+    -fx-background-color : #267070;
 }
 .button3:pressed
 {
-    -fx-background-color : #1a4d4d ;
+    -fx-background-color : #267070 ;
 }
 
 .button4
 {
-    -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
+    -fx-background-color :linear-gradient(to top left, #D4CEE3, #40E0D0);
     -fx-background-radius :  30 30 30 30;
 }
 .button4:hover
 {
-    -fx-background-color :linear-gradient(to top left, #D4CEE3, #41951C);
+    -fx-background-color :linear-gradient(to top left, #40E0D0, #D4CEE3);
     -fx-background-radius :  30 30 30 30;
 }
 .button4:pressed
 {
-    -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
+    -fx-background-color :linear-gradient(to top left, #40E0D0, #D4CEE3);
     -fx-background-radius :  30 30 30 30;
 }
-
+.button5
+{
+    -fx-background-color :linear-gradient(to top left, #40E0D0, #D4CEE3);
+    -fx-background-radius :  30 30 30 30;
+}
+.button5:hover
+{
+    -fx-background-color :linear-gradient(to top left, #D4CEE3, #40E0D0);
+    -fx-background-radius :  30 30 30 30;
+}
+.button5:pressed
+{
+    -fx-background-color :linear-gradient(to top left, #D4CEE3, #40E0D0);
+    -fx-background-radius :  30 30 30 30;
+}
 
 .combo-box
 {

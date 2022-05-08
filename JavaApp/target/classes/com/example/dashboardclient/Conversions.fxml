@@ -94,7 +94,7 @@
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <Button mnemonicParsing="false" onAction="#conversionEuro" prefHeight="26.0" prefWidth="323.0" styleClass="button3" stylesheets="@../../../fullpackstyling.css" text="Convertir" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#conversionEuro" prefHeight="26.0" prefWidth="323.0" styleClass="button4" stylesheets="@../../../fullpackstyling.css" text="Convertir" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             </children>

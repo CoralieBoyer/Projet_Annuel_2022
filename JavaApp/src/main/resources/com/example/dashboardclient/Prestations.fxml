@@ -101,7 +101,7 @@
                   <TextField fx:id="descriptionField" prefHeight="26.0" prefWidth="0.0" translateX="5.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                   <TextField fx:id="nameField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <TextField fx:id="priceField" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                  <Button mnemonicParsing="false" onAction="#addProductOrPrestation" prefHeight="26.0" prefWidth="142.0" styleClass="button3" stylesheets="@../../../fullpackstyling.css" text="Validez" GridPane.columnIndex="5" GridPane.rowIndex="9" />
+                  <Button mnemonicParsing="false" onAction="#addProductOrPrestation" prefHeight="26.0" prefWidth="142.0" styleClass="button4" stylesheets="@../../../fullpackstyling.css" text="Validez" GridPane.columnIndex="5" GridPane.rowIndex="9" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" text="Description : " wrappingWidth="194.39373779296875" GridPane.rowIndex="9" />
                   <Text layoutX="10.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" text="Nom :" wrappingWidth="193.29495239257812" GridPane.rowIndex="3" />
                   <Text layoutX="253.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" text="Prix :" wrappingWidth="156.623779296875" GridPane.columnIndex="2" GridPane.rowIndex="3" />
@@ -120,10 +120,10 @@
                <children>
                   <TableView fx:id="tableView" prefHeight="602.0" prefWidth="970.0" translateX="5.0">
                     <columns>
-                      <TableColumn fx:id="price" prefWidth="75.0" text="Name" />
-                      <TableColumn fx:id="name" prefWidth="75.0" text="Price" />
+                      <TableColumn fx:id="price" prefWidth="75.0" text="Nom" />
+                      <TableColumn fx:id="name" prefWidth="75.0" text="Prix" />
                         <TableColumn fx:id="description" prefWidth="603.5" text="Description" />
-                        <TableColumn fx:id="quantity" minWidth="0.0" prefWidth="218.5" text="Quantity" />
+                        <TableColumn fx:id="quantity" minWidth="0.0" prefWidth="218.5" text="Quantité" />
                     </columns>
                   </TableView>
                </children>

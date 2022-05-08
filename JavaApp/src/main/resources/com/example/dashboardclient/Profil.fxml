@@ -104,7 +104,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" onAction="#modifyInfosUser" prefHeight="26.0" prefWidth="320.0" text="Validez vos modifications" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#modifyInfosUser" prefHeight="26.0" prefWidth="320.0" styleClass="button4" stylesheets="@../../../fullpackstyling.css" text="Validez vos modifications" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                   <TextField fx:id="nameField" GridPane.columnIndex="1" />
                   <TextField fx:id="passwordField" layoutX="10.0" layoutY="12.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <TextField fx:id="emailField" layoutX="10.0" layoutY="12.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -143,7 +143,7 @@
                 <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" onAction="#modifySiretPartner" prefHeight="26.0" prefWidth="482.0" text="Validez votre modification " GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#modifySiretPartner" prefHeight="26.0" prefWidth="482.0" styleClass="button5" stylesheets="@../../../fullpackstyling.css" text="Validez votre modification " GridPane.columnIndex="3" GridPane.rowIndex="1" />
                   <TextField fx:id="siretField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" text="Siret :" wrappingWidth="240.1651611328125" GridPane.rowIndex="1">
                      <font>
