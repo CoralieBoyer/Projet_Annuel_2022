@@ -23,7 +23,7 @@ class Profile{
         }
         else if($_POST['action'] == "modifyPassword"){
             if(hash('sha512', $_POST['old']) == $user['password']){
-                UserModel::modify($_POST['name'], $_POST['email'], $_POST['new'], $_POST['id']);
+                UserModel::modifyPasswd($_POST['new'], $_POST['id']);
                 $infos = [
                     "message" => "true"
                 ];

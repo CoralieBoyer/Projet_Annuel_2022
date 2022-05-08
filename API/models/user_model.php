@@ -128,6 +128,17 @@ class UserModel{
     ]);
   }
 
+  public static function modifyPasswd($password, $id){
+    $databaseConnection = Database::getConnection();
+
+    $q = "UPDATE USER SET password = :password WHERE id = :id";
+    $req = $databaseConnection->prepare($q);
+    $response = $req->execute([
+      'password' => hash('sha512', $password),
+      'id' => $id
+    ]);
+  }
+
   public static function modifyName($name, $id){
         $databaseConnection = Database::getConnection();
 
