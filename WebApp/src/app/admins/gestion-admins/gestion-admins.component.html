@@ -21,13 +21,13 @@
     </tr>
     <tr *ngFor="let attribut of attributsAdmin" class="border border-b-black">
       <td class="text-center">{{attribut.id_user}}</td>
-      <td class="text-center"><input [(ngModel)]="attribut.name"></td>
-      <td class="text-center"><input [(ngModel)]="attribut.firstname"></td>
-      <td class="text-center"><input [(ngModel)]="attribut.email"></td>
-      <td></td>
-      <td class="text-center">
+      <td><input [(ngModel)]="attribut.name"></td>
+      <td><input [(ngModel)]="attribut.firstname"></td>
+      <td><input [(ngModel)]="attribut.email"></td>
+      <td><input [(ngModel)]="attribut.newPassword" placeholder="Mot de passe"></td>
+      <td>
         <button (click)="delete(attribut.id_user, attribut.id)">Supprimer</button>
-        <button class="ml-4" (click)="modify(attribut.id_user, attribut.name, attribut.password, attribut.firstname, attribut.email, attribut.id)">Modifier</button>
+        <button class="ml-4" (click)="modify(attribut.id_user, attribut.name, attribut.newPassword, attribut.firstname, attribut.email, attribut.id)">Modifier</button>
       </td>
     </tr>
     </tbody>
