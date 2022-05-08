@@ -11,7 +11,7 @@ import jsPDF from "jspdf";
 })
 export class ProfileComponent implements OnInit {
   attributsUser!: {id: string, name: string, email: string, password: string};
-  attributsCustomer!: {id: string, firstname: string, address: string, city: string, phone_number: string, zip_code: string};
+  attributsCustomer!: {id: string, firstname: string, address: string, city: string, phone_number: string, zip_code: string, loyalty_number: string};
   attributsBasket!: {id: string, data: string, count: string, name: string, price: string}[][];
   idBaskets!: {id: string, date: string}[];
   password = {new: "", old: ""};
@@ -86,8 +86,8 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  public createPDF(idBasket: string): void {
-    let DATA: any = document.getElementById(idBasket);
+  public createPDF(): void {
+    let DATA: any = document.getElementById("card");
     html2canvas(DATA).then((canvas) => {
       let fileWidth = 208;
       let fileHeight = (canvas.height * fileWidth) / canvas.width;
@@ -95,7 +95,7 @@ export class ProfileComponent implements OnInit {
       let PDF = new jsPDF('p', 'mm', 'a4');
       let position = 0;
       PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-      PDF.save('angular-demo.pdf');
+      PDF.save('Loyalty-card.pdf');
     });
   }
 

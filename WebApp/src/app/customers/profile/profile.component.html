@@ -5,7 +5,43 @@
 
 <div class="flex justify-around flex-wrap">
   <!-- Left -->
-  <div class="w-7/12">
+  <div class="w-full md:w-1/2">
+    <h1 class="font-semibold uppercase text-gray-600">{{'Profile.Loyalty'|translate}}</h1>
+    <div class="w-full flex justify-center md:justify-start" id="card">
+      <div class=" p-3 flex justify-end items-start flex-col rounded-xl w-2/3 md:w-2/5 my-5 bg-blue-800">
+        <div class="flex justify-between flex-col w-full h-full">
+          <div class="flex justify-between items-start">
+            <div class="w-8 h-8 rounded-full border-2 border-white flex justify-center items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="text-white fill-current h-10 md:h-5 px-2" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/></svg>
+            </div>
+            <div class="text-right">
+              <p class="text-white mt-1 text-2xl">Loyalty Card</p>
+            </div>
+          </div>
+          <div>
+            <p class="text-white font-light pt-5">
+              {{attributsCustomer.firstname}} {{attributsUser.name}}
+            </p>
+            <div>
+              <ngx-barcode6
+                [bc-format]="'CODE128'"
+                [bc-value]="attributsCustomer.loyalty_number"
+                [bc-display-value]="true"
+                [bc-background]="'transparent'"
+                [bc-line-color]="'white'"
+                [bc-height]="50"
+                [bc-width]="1.1"
+                [bc-font-size]="13"
+              >
+              </ngx-barcode6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full flex justify-end">
+      <button (click)="createPDF()" class="bg-blue-700 hover:bg-blue-900 text-white rounded py-2 px-4 text-center">Télécharger la carte en .PDF</button>
+    </div>
     <h1 class="font-semibold uppercase text-gray-600">{{'Profile.OrderHistory'|translate}}</h1>
     <!-- -->
     <div class="border-t mt-4" *ngFor="let basket of idBaskets" id="{{basket.id}}">

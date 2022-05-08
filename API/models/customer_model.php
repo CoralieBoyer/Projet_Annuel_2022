@@ -4,10 +4,10 @@ include_once __DIR__ . "/../database/connect_db.php";
 
 class CustomerModel{
 
-  public static function insert($firstname,$address,$zip_code,$city,$phone_number,$id_user){
+  public static function insert($firstname,$address,$zip_code,$city,$phone_number,$token,$id_user){
     $databaseConnection = Database::getConnection();
 
-      $q = "INSERT INTO CUSTOMER (firstname,address,zip_code,city,phone_number,id_user) VALUES(:firstname,:address,:zip_code,:city,:phone_number,:id_user)";
+      $q = "INSERT INTO CUSTOMER (firstname,address,zip_code,city,phone_number,loyalty_number,id_user) VALUES(:firstname,:address,:zip_code,:city,:phone_number,:token,:id_user)";
       $req = $databaseConnection->prepare($q);
       $response = $req->execute([
         'firstname' => $firstname,
@@ -15,6 +15,7 @@ class CustomerModel{
         'zip_code' => $zip_code,
         'city' => $city,
         'phone_number' => $phone_number,
+        'token' => $token,
         'id_user' => $id_user
     ]);
   }

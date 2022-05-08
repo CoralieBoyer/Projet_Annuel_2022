@@ -39,6 +39,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {PaymentPageComponent} from "./customers/payment-page/payment-page.component";
 import { OneSignal } from 'onesignal-ngx';
 import { InvoicePdfComponent } from './customers/invoice-pdf/invoice-pdf.component';
+import { NgxBarcode6Module } from 'ngx-barcode6';
 
 const appRoutes: Routes = [
   { path : '', component: HomePageComponent },
@@ -109,6 +110,7 @@ const appRoutes: Routes = [
         deps: [HttpClient]
       }
     }),
+    NgxBarcode6Module
   ],
   providers: [
     ConnexionService,
