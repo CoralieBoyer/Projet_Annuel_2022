@@ -89,23 +89,4 @@ export class PartnersComponent implements OnInit {
       });
   }
 
-  modifyProduce(description: string, id: string, image: string, name: string, points: string, quantity: string){
-    let message = window.document.getElementById("message")!;
-    const formData: FormData = new FormData();
-    formData.append("action", "modifyProduce");
-    formData.append("description", description);
-    formData.append("id", id);
-    formData.append("image", image);
-    formData.append("name", name);
-    formData.append("points", points);
-    formData.append("quantity", quantity);
-    this.apiConnexionForAdmin.GestionPartnersPostService(formData).subscribe(res=>{
-        message.innerHTML = res;
-        this.ngOnInit();
-      },
-      err=>{
-        console.log(err);
-      });
-  }
-
 }

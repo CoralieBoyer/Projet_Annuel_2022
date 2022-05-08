@@ -40,8 +40,6 @@
         <h1 class="font-bold uppercase text-gray-600">Ajouter une cautisation</h1>
       </div>
       <div class="p-5 flex items-center w-full">
-        <input class="border rounded mr-5" placeholder="Chiffre d'affaire (€)">
-        <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mr-2">Ajouter</button>
         <table class="table-auto w-full bg-gray-100">
           <thead>
           <tr>
@@ -116,7 +114,6 @@
           <td><input class="text-center bg-gray-100" [(ngModel)]="attribut.quantity"></td>
           <td>
             <button (click)="deleteProduce(attribut.id_product)">Supprimer</button>
-            <button class="ml-4" (click)="modifyProduce(attribut.description, attribut.id_product, attribut.image, attribut.name, attribut.price, attribut.quantity)">Modifier</button>
           </td>
         </tr>
         </tbody>
