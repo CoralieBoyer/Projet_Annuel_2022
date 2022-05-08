@@ -38,6 +38,8 @@ export class PrestationsComponent implements OnInit {
     formData.append("id", this.id);
     this.apiConnexionForPartner.PrestationsPostService(formData).subscribe(res=>{
         console.log(res);
+        this.ngOnInit();
+        this.newAttributs = {description: "", id_product: "", image: "", name: "", price: "", quantity: ""};
       },
       err=>{
         console.log(err);

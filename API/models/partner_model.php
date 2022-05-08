@@ -7,7 +7,7 @@ class PartnerModel{
   public static function insert($siret,$id){
     $databaseConnection = Database::getConnection();
 
-      $q = "INSERT INTO PARTNER (siret,id_user) VALUES(:siret,:id)";
+      $q = "INSERT INTO PARTNER (siret, status, id_user) VALUES(:siret, 0, :id)";
       $req = $databaseConnection->prepare($q);
       $response = $req->execute([
         'siret' => $siret,
@@ -35,6 +35,18 @@ class PartnerModel{
     $response = $req->execute([
       'siret' => $siret,
       'status' => $status,
+      'id' => $id
+    ]);
+  }
+
+  public static function modifyProfile($siret, $link, $id){
+    $databaseConnection = Database::getConnection();
+
+    $q = "UPDATE PARTNER SET siret = :siret, link = :link WHERE id_user = :id";
+    $req = $databaseConnection->prepare($q);
+    $response = $req->execute([
+      'siret' => $siret,
+      'link' => $link,
       'id' => $id
     ]);
   }

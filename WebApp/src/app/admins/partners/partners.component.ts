@@ -48,6 +48,7 @@ export class PartnersComponent implements OnInit {
     formData.append("id", id);
     this.apiConnexionForAdmin.GestionPartnersPostService(formData).subscribe(res=>{
         message.innerHTML = res;
+        this.ngOnInit();
       },
       err=>{
         console.log(err);
@@ -67,6 +68,7 @@ export class PartnersComponent implements OnInit {
     formData.append("id", this.attributsPartner.id);
     this.apiConnexionForAdmin.GestionPartnersPostService(formData).subscribe(res=>{
         message.innerHTML = res;
+        this.ngOnInit();
       },
       err=>{
         console.log(err);
@@ -80,6 +82,7 @@ export class PartnersComponent implements OnInit {
     formData.append("id", id);
     this.apiConnexionForAdmin.GestionPartnersPostService(formData).subscribe(res=>{
         message.innerHTML = res;
+        this.ngOnInit();
       },
       err=>{
         console.log(err);
@@ -98,6 +101,7 @@ export class PartnersComponent implements OnInit {
     formData.append("quantity", quantity);
     this.apiConnexionForAdmin.GestionPartnersPostService(formData).subscribe(res=>{
         message.innerHTML = res;
+        this.ngOnInit();
       },
       err=>{
         console.log(err);

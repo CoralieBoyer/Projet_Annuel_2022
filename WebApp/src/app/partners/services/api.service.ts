@@ -28,4 +28,8 @@ export class ApiConnexionForPartner {
     return this.http.post<any>(this.link + this.port + this.pathLink + 'contributions', fromData);
   }
 
+  ProfilePostService(fromData: FormData): Observable<any> {
+    return this.http.post<any>(this.link + this.port + this.pathLink + 'profile', fromData);
+  }
+
 }

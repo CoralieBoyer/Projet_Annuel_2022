@@ -41,6 +41,14 @@ if ($route === "contributions") {
     }
 }
 
+if ($route === "profile") {
+    include __DIR__ . "/controllers/profile.php";
+    if ($method === "POST") {
+        Profile::post();
+        die();
+    }
+}
+
 {
     include __DIR__ . "/../library/response.php";
     echo Response::json(404, ["Content-Type" => "application/json"], "Not found");

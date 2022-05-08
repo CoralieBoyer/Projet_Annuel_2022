@@ -99,6 +99,7 @@ export class LoginComponent implements OnInit {
         }
         if (res == "partner"){
           alert("Votre compte a été créé avec succès.");
+          console.log(res);
         }
         if (res == "customer")
           alert("Votre compte a été créé avec succès.");

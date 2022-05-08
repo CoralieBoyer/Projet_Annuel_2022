@@ -40,6 +40,7 @@ import { OneSignal } from 'onesignal-ngx';
 import { InvoicePdfComponent } from './customers/invoice-pdf/invoice-pdf.component';
 import { NgxBarcode6Module } from 'ngx-barcode6';
 import { GestionProductsComponent } from './admins/gestion-products/gestion-products.component';
+import { ProfilPartnerComponent } from './partners/profil-partner/profil-partner.component';
 
 const appRoutes: Routes = [
   { path : '', component: HomePageComponent },
@@ -51,6 +52,7 @@ const appRoutes: Routes = [
   { path: 'partenaire/contact', component: ContactComponent},
   { path: 'partenaire/contact/FAQ', component: FaqComponent},
   { path: 'partenaire/prestations', component: PrestationsComponent},
+  { path: 'partners/profil', component: ProfilPartnerComponent},
   { path: 'connexion', component: LoginComponent },
   { path: 'produit/:id', component: ProductComponent },
   { path: 'prestations', component: CatalogPrestationsComponent },
@@ -91,7 +93,8 @@ const appRoutes: Routes = [
     PrestationsComponent,
     SideBarComponent,
     InvoicePdfComponent,
-    GestionProductsComponent
+    GestionProductsComponent,
+    ProfilPartnerComponent
   ],
   imports: [
     BrowserModule,
