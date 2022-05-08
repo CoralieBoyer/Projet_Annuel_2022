@@ -20,6 +20,29 @@ class CustomerModel{
     ]);
   }
 
+  public static function updatePoints($points,$id){
+    $databaseConnection = Database::getConnection();
+
+      $q = "UPDATE CUSTOMER SET points = :points WHERE id = :id";
+      $req = $databaseConnection->prepare($q);
+      $response = $req->execute([
+        'points' => $points,
+        'id' => $id
+    ]);
+  }
+
+  public static function getAll($id){
+    $databaseConnection = Database::getConnection();
+
+      $q = "SELECT * FROM CUSTOMER WHERE id = :id";
+      $req = $databaseConnection->prepare($q);
+      $response = $req->execute([
+        'id' => $id
+    ]);
+      $result = $req->fetch(PDO::FETCH_ASSOC);
+      return $result;
+  }  
+
   public static function getAllWithIdUser($id){
     $databaseConnection = Database::getConnection();
 

@@ -75,6 +75,11 @@ if ($route === "tests") {
         Tests::get();
         die();
     }
+
+    if ($method === "POST") {
+        Tests::post();
+        die();
+    }
 }
 
 {

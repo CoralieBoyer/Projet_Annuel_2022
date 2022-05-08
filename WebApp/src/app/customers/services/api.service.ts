@@ -47,4 +47,8 @@ export class ApiConnexion {
     return this.http.get(this.link + this.port + this.pathLink + 'tests');
   }
 
+  TestsPostService(fromData: FormData):Observable<any>{
+    return this.http.post<any>(this.link + this.port + this.pathLink + 'tests', fromData);
+  }
+
 }
