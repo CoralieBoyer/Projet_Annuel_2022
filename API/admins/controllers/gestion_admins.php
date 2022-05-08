@@ -19,9 +19,9 @@ class Admins{
     }
 
     if($_POST['action'] == "modify"){
-      UserModel::modify($_POST['name'], $_POST['email'], $_POST['password'], $_POST['id_user']);
+      UserModel::modify($_POST['name'], $_POST['email'], $_POST['id_user']);
       AdminModel::modify($_POST['firstname'], $_POST['id']);
-      echo json_encode('Modifications effectuées.');
+      echo json_encode($_POST['email']);
     }
     if($_POST['action'] == "delete"){
       UserModel::delete($_POST['id_user']);

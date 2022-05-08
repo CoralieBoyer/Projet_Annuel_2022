@@ -9,7 +9,7 @@ import { ApiConnexionForAdmin } from '../services/api.service';
 export class GestionAdminsComponent implements OnInit {
   attributsAdmin!: {email: string, firstname: string, id: string, id_user: string, label_role: string, name: string, password:string}[];
   NewAttributsAdmin = {email: "", firstname: "", name: "", password:""};
-  headerTab = [ "ID", "Nom", "Prénom", "Email", "Mot de passe", "Actions", "Message"];
+  headerTab = [ "ID", "Nom", "Prénom", "Email", "Mot de passe", "Actions"];
 
   constructor(private apiConnexionForAdmin: ApiConnexionForAdmin) {
   }
@@ -25,15 +25,14 @@ export class GestionAdminsComponent implements OnInit {
   }
 
   add(){
-    let message = window.document.getElementById("add")!;
     const formData: FormData = new FormData();
     formData.append("action", "add");
     formData.append("name", this.NewAttributsAdmin.name);
     formData.append("firstname", this.NewAttributsAdmin.firstname);
     formData.append("email", this.NewAttributsAdmin.email);
-    formData.append("password", this.NewAttributsAdmin.password);
     this.apiConnexionForAdmin.GestionAdminsPostService(formData).subscribe(res=>{
-        message.innerHTML = res;
+        alert(res);
+        this.ngOnInit();
       },
       err=>{
         console.log(err);
@@ -41,13 +40,13 @@ export class GestionAdminsComponent implements OnInit {
   }
 
   delete(id_user: string, id: string){
-    let message = window.document.getElementById(id_user)!;
     const formData: FormData = new FormData();
     formData.append("action", "delete");
     formData.append("id_user", id_user);
     formData.append("id", id);
     this.apiConnexionForAdmin.GestionAdminsPostService(formData).subscribe(res=>{
-        message.innerHTML = res;
+        alert(res);
+        this.ngOnInit();
       },
       err=>{
         console.log(err);
@@ -55,7 +54,6 @@ export class GestionAdminsComponent implements OnInit {
   }
 
   modify(id_user: string, name : string, password : string, firstname: string, email: string, id: string){
-    let message = window.document.getElementById(id_user)!;
     const formData: FormData = new FormData();
     formData.append("action", "modify");
     formData.append("id_user", id_user);
@@ -64,8 +62,9 @@ export class GestionAdminsComponent implements OnInit {
     formData.append("firstname", firstname);
     formData.append("email", email);
     formData.append("id", id);
-    this.apiConnexionForAdmin.GestionUsersPostService(formData).subscribe(res=>{
-        message.innerHTML = res;
+    this.apiConnexionForAdmin.GestionAdminsPostService(formData).subscribe(res=>{
+        alert(res);
+        this.ngOnInit();
       },
       err=>{
         console.log(err);

@@ -27,14 +27,13 @@ class AdminModel{
     ]);
   }
 
-  public static function modify($firstname, $email, $id){ //FAIRE AUSSI POUR CLIENT
+  public static function modify($firstname, $id){
     $databaseConnection = Database::getConnection();
 
-    $q = "UPDATE ADMINISTRATOR SET firstname = :firstname, email = :email WHERE id = :id";
+    $q = "UPDATE ADMINISTRATOR SET firstname = :firstname WHERE id = :id";
     $req = $databaseConnection->prepare($q);
     $response = $req->execute([
       'firstname' => $firstname,
-      'email' => $email,
       'id' => $id
     ]);
   }

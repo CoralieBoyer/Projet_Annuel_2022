@@ -16,21 +16,19 @@
       <td class="text-center"><input placeholder="Nom" [(ngModel)]="NewAttributsAdmin.name"></td>
       <td class="text-center"><input placeholder="Prénom" [(ngModel)]="NewAttributsAdmin.firstname"></td>
       <td class="text-center"><input placeholder="exemple@email.com" [(ngModel)]="NewAttributsAdmin.email"></td>
-      <td class="text-center"><input placeholder="MotDePasse" [(ngModel)]="NewAttributsAdmin.password"></td>
+      <td class="text-center"><input placeholder="Mot de passe" [(ngModel)]="NewAttributsAdmin.password"></td>
       <td class="text-center"><button (click)="add()">Ajouter</button></td>
-      <td class="text-center" [id]="'add'"></td>
     </tr>
     <tr *ngFor="let attribut of attributsAdmin" class="border border-b-black">
       <td class="text-center">{{attribut.id_user}}</td>
       <td class="text-center"><input [(ngModel)]="attribut.name"></td>
       <td class="text-center"><input [(ngModel)]="attribut.firstname"></td>
       <td class="text-center"><input [(ngModel)]="attribut.email"></td>
-      <td class="text-center"><input [(ngModel)]="attribut.password"></td>
+      <td></td>
       <td class="text-center">
         <button (click)="delete(attribut.id_user, attribut.id)">Supprimer</button>
         <button class="ml-4" (click)="modify(attribut.id_user, attribut.name, attribut.password, attribut.firstname, attribut.email, attribut.id)">Modifier</button>
       </td>
-      <td class="text-center" [id]="attribut.id_user"></td>
     </tr>
     </tbody>
   </table>
