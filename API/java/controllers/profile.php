@@ -8,7 +8,7 @@ class Profile{
 
     public static function post(){
         if($_POST['action'] == "modifyUserInfos"){
-            UserModel::modify($_POST['name'],$_POST['email'],$_POST['password'],$_POST['id']); 
+            UserModel::modifyUserInfos($_POST['name'],$_POST['email'],$_POST['password'],$_POST['id']); 
             $infos = "Changement effectué.";
         }
         else if($_POST['action'] == "modifyPartnerInfos"){
