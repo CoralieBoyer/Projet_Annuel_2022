@@ -29,21 +29,29 @@ export class PrestationsComponent implements OnInit {
   }
 
   add(){
-    const formData: FormData = new FormData();
-    formData.append("action", "add");
-    formData.append("name", this.newAttributs.name);
-    formData.append("description", this.newAttributs.description);
-    formData.append("price", this.newAttributs.price);
-    formData.append("quantity", this.newAttributs.quantity);
-    formData.append("id", this.id);
-    this.apiConnexionForPartner.PrestationsPostService(formData).subscribe(res=>{
-        console.log(res);
-        this.ngOnInit();
-        this.newAttributs = {description: "", id_product: "", image: "", name: "", price: "", quantity: ""};
-      },
-      err=>{
-        console.log(err);
-      });
+    if (this.newAttributs.name == "" || this.newAttributs.price == "" || this.newAttributs.quantity == "" || this.newAttributs.description == ""){
+      alert("Veuillez remplir tous les champs");
+    }
+    else if (parseInt(this.newAttributs.price) <= 0 || parseInt(this.newAttributs.quantity) <= 0) {
+      alert("Veuillez entrer un prix et une quantité correcte");
+    }
+    else {
+      const formData: FormData = new FormData();
+      formData.append("action", "add");
+      formData.append("name", this.newAttributs.name);
+      formData.append("description", this.newAttributs.description);
+      formData.append("price", this.newAttributs.price);
+      formData.append("quantity", this.newAttributs.quantity);
+      formData.append("id", this.id);
+      this.apiConnexionForPartner.PrestationsPostService(formData).subscribe(res => {
+          console.log(res);
+          this.ngOnInit();
+          this.newAttributs = {description: "", id_product: "", image: "", name: "", price: "", quantity: ""};
+        },
+        err => {
+          console.log(err);
+        });
+    }
   }
 
   delete(id: string){

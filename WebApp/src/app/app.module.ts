@@ -94,7 +94,8 @@ const appRoutes: Routes = [
     SideBarComponent,
     InvoicePdfComponent,
     GestionProductsComponent,
-    ProfilPartnerComponent
+    ProfilPartnerComponent,
+    PaymentPageComponent
   ],
   imports: [
     BrowserModule,
